@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_sleep"
+        android:title="Автозавершення"
+        android:orderInCategory="5"
+        app:showAsAction="never"/>
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="4"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_touch"
+        android:icon="@drawable/touch"
+        android:orderInCategory="2"
+        android:title="Touch"
+        app:showAsAction="always"/>
+    <item android:id="@+id/action_save"
+        android:icon="@drawable/save"
+        android:title="Save"
+        android:orderInCategory="3"
+        app:showAsAction="always"/>
+    <item android:id="@+id/action_hint"
+        android:icon="@drawable/list"
+        android:title="Hint"
+        android:orderInCategory="1"
+        app:showAsAction="always"/>
+    <item android:id="@+id/action_done"
+        android:icon="@drawable/done"
+        android:title="Done"
+        app:showAsAction="always"/>
+
+</menu>

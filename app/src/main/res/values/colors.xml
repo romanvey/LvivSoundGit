@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#FF9800</color>
+    <color name="primaryColorDark">#F57C00</color>
+    <color name="accentColor">#F44336</color>
+    <color name="accentColor800">#C62828</color>
+    <color name="mdtp_accent_color">#FF9800</color>
+    <color name="mdtp_accent_color_dark">#F57C00</color>
+    <color name="text_color_dark">#373737</color>
+    <color name="text_color">#ffffff</color>
+</resources>
