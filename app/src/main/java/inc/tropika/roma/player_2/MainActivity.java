@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public static Cursor settings=null;
     public static int pos = -1;
     public static int id = -1;
+    public static int STYLES;
     public static int cursor_numb;
     public static int duration = -1;
     final int CHECKING_TIME=2;
@@ -163,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
             getAudio();
         }
         settings.moveToFirst();
+        STYLES=settings.getInt(5);
         if(settings.getInt(5)==1){
             tf = Typeface.createFromAsset(this.getAssets(), "DS_Moster.ttf");
         }else{
@@ -265,10 +267,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
        cv.put(DBHelper.F2,tmp2);
        cv.put(DBHelper.F3,tmp3);
        cv.put(DBHelper.F4,tmp4);
-       db.update(DBHelper.SETTINGS,cv,null,null);
+       db.update(DBHelper.SETTINGS, cv, null, null);
        cv.clear();
        settings=db.query(DBHelper.SETTINGS,null,null,null,null,null,null);
        boosting();
+       System.gc();
        style();
        if(PAGE==0){
            done.setVisible(false);
@@ -325,7 +328,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
        fr.commit();
    }
 public void style(){
-    settings.moveToFirst();
+   /* settings.moveToFirst();
     if(settings.getInt(5)==1){
         tf = Typeface.createFromAsset(this.getAssets(), "DS_Moster.ttf");
         AllAdapter aa=new AllAdapter(getBaseContext());
@@ -424,37 +427,38 @@ public void style(){
         Setts.diapason.setTypeface(MainActivity.tf);
         Donate.btn.setTypeface(MainActivity.tf);
         Player.mood_t.setTypeface(MainActivity.tf);
-        Search.root.setBackground(getResources().getDrawable(R.drawable.st_1));
-        List.root.setBackground(getResources().getDrawable(R.drawable.st_2));
-        Player.root.setBackground(getResources().getDrawable(R.drawable.st_3));
-        Donate.root.setBackground(getResources().getDrawable(R.drawable.st_4));
+
+            Search.root.setBackground(getResources().getDrawable(R.drawable.st_1));
+            List.root.setBackground(getResources().getDrawable(R.drawable.st_2));
+            Player.root.setBackground(getResources().getDrawable(R.drawable.st_3));
+            Donate.root.setBackground(getResources().getDrawable(R.drawable.st_4));
     }else{
         tf = Typeface.createFromAsset(this.getAssets(), "AGGalleonC.otf");
         AllAdapter aa=new AllAdapter(getBaseContext());
         Search.list.setAdapter(aa);
-        Search.positiv.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Search.uncategory.setTextColor(getResources().getColor(R.color.text_color_dark));
+        Search.positiv.setTextColor(getResources().getColor(R.color.text_color));
+        Search.uncategory.setTextColor(getResources().getColor(R.color.text_color));
         MusicAdapter ma=new MusicAdapter(this);
         List.lv.setAdapter(ma);
-        Player.min1.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.min2.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.min3.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player. min4.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player. min5.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.max1.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.max2.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.max3.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.max4.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.max5.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.freq1.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.freq2.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player. freq3.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.freq4.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.freq5.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.title.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.currTime.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.allTime.setTextColor(getResources().getColor(R.color.text_color_dark));
-        Player.mood_t.setTextColor(getResources().getColor(R.color.text_color_dark));
+        Player.min1.setTextColor(getResources().getColor(R.color.text_color));
+        Player.min2.setTextColor(getResources().getColor(R.color.text_color));
+        Player.min3.setTextColor(getResources().getColor(R.color.text_color));
+        Player. min4.setTextColor(getResources().getColor(R.color.text_color));
+        Player. min5.setTextColor(getResources().getColor(R.color.text_color));
+        Player.max1.setTextColor(getResources().getColor(R.color.text_color));
+        Player.max2.setTextColor(getResources().getColor(R.color.text_color));
+        Player.max3.setTextColor(getResources().getColor(R.color.text_color));
+        Player.max4.setTextColor(getResources().getColor(R.color.text_color));
+        Player.max5.setTextColor(getResources().getColor(R.color.text_color));
+        Player.freq1.setTextColor(getResources().getColor(R.color.text_color));
+        Player.freq2.setTextColor(getResources().getColor(R.color.text_color));
+        Player. freq3.setTextColor(getResources().getColor(R.color.text_color));
+        Player.freq4.setTextColor(getResources().getColor(R.color.text_color));
+        Player.freq5.setTextColor(getResources().getColor(R.color.text_color));
+        Player.title.setTextColor(getResources().getColor(R.color.text_color));
+        Player.currTime.setTextColor(getResources().getColor(R.color.text_color));
+        Player.allTime.setTextColor(getResources().getColor(R.color.text_color));
+        Player.mood_t.setTextColor(getResources().getColor(R.color.text_color));
         Player.min1.setTypeface(MainActivity.tf);
         Player.min2.setTypeface(MainActivity.tf);
         Player.min3.setTypeface(MainActivity.tf);
@@ -476,7 +480,7 @@ public void style(){
         Search.uncategory.setTypeface(MainActivity.tf);
         Search.positiv.setTypeface(MainActivity.tf);
         try {
-            Player.gest_txt.setTextColor(getResources().getColor(R.color.text_color_dark));
+            Player.gest_txt.setTextColor(getResources().getColor(R.color.text_color));
             Player.gest_txt.setTypeface(MainActivity.tf);
         } catch (Resources.NotFoundException e) {
             e.printStackTrace();
@@ -526,10 +530,30 @@ public void style(){
         Setts.diapason.setTypeface(MainActivity.tf);
         Donate.btn.setTypeface(MainActivity.tf);
         Player.mood_t.setTypeface(MainActivity.tf);
-        Search.root.setBackground(getResources().getDrawable(R.drawable.t2));
-        List.root.setBackground(getResources().getDrawable(R.drawable.st_3));
-        Player.root.setBackground(getResources().getDrawable(R.drawable.t3));
-        Donate.root.setBackground(getResources().getDrawable(R.drawable.t3));
+
+            Search.root.setBackground(getResources().getDrawable(R.drawable.lv_1));
+            List.root.setBackground(getResources().getDrawable(R.drawable.lv_2));
+            Player.root.setBackground(getResources().getDrawable(R.drawable.lv_3));
+            Donate.root.setBackground(getResources().getDrawable(R.drawable.lv_4));
+    }
+    */
+     settings.moveToFirst();
+    if(STYLES!=settings.getInt(5)){
+        AlertDialog.Builder builder_c = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
+        builder_c.setTitle("Зміни");
+        builder_c.setMessage("Щоб зміни вступили в силу перезавантажте плеєр");
+        builder_c.setNegativeButton("Вийти з плеєра", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                System.exit(0);
+            }
+        });
+        builder_c.setCancelable(false);
+        builder_c.show();
     }
 }
 public void boosting(){
@@ -735,7 +759,7 @@ fr.commit();
                 if(settings.getInt(5)==1) {
                     Player.gest_txt.setTextColor(getResources().getColor(R.color.text_color));
                 }else{
-                    Player.gest_txt.setTextColor(getResources().getColor(R.color.text_color_dark));
+                    Player.gest_txt.setTextColor(getResources().getColor(R.color.text_color));
                 }
                 Player.gest_txt.setTypeface(MainActivity.tf);
 
@@ -789,10 +813,20 @@ fr.commit();
             Player.video.start();
         }
         Log.d("State", "All: " + Runtime.getRuntime().totalMemory() + " Free: " + Runtime.getRuntime().freeMemory());
-        if(i==null){
-            i=new Intent(this,MyService.class);
-            bindService(i,con, Context.BIND_AUTO_CREATE);
-            startService(i);
+        try {
+            if(i==null){
+                i=new Intent(this,MyService.class);
+                bindService(i,con, Context.BIND_AUTO_CREATE);
+                startService(i);
+            }
+        } catch (Exception e) {
+            Log.d("State","Error in starting service: "+e.toString());
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            System.exit(0);
+
         }
         if(notification!=null){
             mNotificationManager.cancel(NOTIF_ID);notification=null;

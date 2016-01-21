@@ -39,10 +39,10 @@
         android:max="50"
         android:indeterminate="false"
         android:progress="10"
-        android:layout_below="@+id/autostarting"
+        android:layout_below="@+id/repeating"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,8 +60,10 @@
         android:layout_height="wrap_content"
         android:text="Підсилення басів в пісні"
         android:id="@+id/autostarting"
-        android:layout_below="@+id/repeating"
-        android:layout_alignParentLeft="true"
+            android:layout_below="@+id/f2"
+            android:layout_alignRight="@+id/f1"
+            android:layout_alignEnd="@+id/f1"
+            android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -73,13 +75,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/repeating"
-        android:layout_below="@+id/f2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:textColor="#ffffffff"
         android:visibility="visible"
         android:checked="false"
-        android:text="Темний сучасний стиль" />
+        android:text="Плитковий стиль"
+        android:layout_below="@+id/autostarting"
+        android:layout_alignRight="@+id/f1"
+        android:layout_alignEnd="@+id/f1"
+        android:layout_marginTop="20dp" />
     </RelativeLayout>
 </ScrollView>
 

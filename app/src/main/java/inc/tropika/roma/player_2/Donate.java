@@ -20,7 +20,7 @@ public class Donate extends android.support.v4.app.Fragment {
         root =(RelativeLayout)view.findViewById(R.id.root);
         btn=(Button)view.findViewById(R.id.button2);
         if(MainActivity.settings.getInt(5)==0){
-            root.setBackground(getResources().getDrawable(R.drawable.t3));
+            root.setBackground(getResources().getDrawable(R.drawable.lv_4));
             btn.setTypeface(MainActivity.tf);
         }
         else{

@@ -149,26 +149,26 @@ public class Player extends android.support.v4.app.Fragment implements TextureVi
 public void style(){
     MainActivity.settings.moveToFirst();
     if(MainActivity.settings.getInt(5)==0){
-        root.setBackground(getResources().getDrawable(R.drawable.t3));
-        min1.setTextColor(getResources().getColor(R.color.text_color_dark));
-        min2.setTextColor(getResources().getColor(R.color.text_color_dark));
-        min3.setTextColor(getResources().getColor(R.color.text_color_dark));
-        min4.setTextColor(getResources().getColor(R.color.text_color_dark));
-        min5.setTextColor(getResources().getColor(R.color.text_color_dark));
-        max1.setTextColor(getResources().getColor(R.color.text_color_dark));
-        max2.setTextColor(getResources().getColor(R.color.text_color_dark));
-        max3.setTextColor(getResources().getColor(R.color.text_color_dark));
-        max4.setTextColor(getResources().getColor(R.color.text_color_dark));
-        max5.setTextColor(getResources().getColor(R.color.text_color_dark));
-        freq1.setTextColor(getResources().getColor(R.color.text_color_dark));
-        freq2.setTextColor(getResources().getColor(R.color.text_color_dark));
-        freq3.setTextColor(getResources().getColor(R.color.text_color_dark));
-        freq4.setTextColor(getResources().getColor(R.color.text_color_dark));
-        freq5.setTextColor(getResources().getColor(R.color.text_color_dark));
-        title.setTextColor(getResources().getColor(R.color.text_color_dark));
-        currTime.setTextColor(getResources().getColor(R.color.text_color_dark));
-        allTime.setTextColor(getResources().getColor(R.color.text_color_dark));
-        mood_t.setTextColor(getResources().getColor(R.color.text_color_dark));
+        root.setBackground(getResources().getDrawable(R.drawable.lv_3));
+        min1.setTextColor(getResources().getColor(R.color.text_color));
+        min2.setTextColor(getResources().getColor(R.color.text_color));
+        min3.setTextColor(getResources().getColor(R.color.text_color));
+        min4.setTextColor(getResources().getColor(R.color.text_color));
+        min5.setTextColor(getResources().getColor(R.color.text_color));
+        max1.setTextColor(getResources().getColor(R.color.text_color));
+        max2.setTextColor(getResources().getColor(R.color.text_color));
+        max3.setTextColor(getResources().getColor(R.color.text_color));
+        max4.setTextColor(getResources().getColor(R.color.text_color));
+        max5.setTextColor(getResources().getColor(R.color.text_color));
+        freq1.setTextColor(getResources().getColor(R.color.text_color));
+        freq2.setTextColor(getResources().getColor(R.color.text_color));
+        freq3.setTextColor(getResources().getColor(R.color.text_color));
+        freq4.setTextColor(getResources().getColor(R.color.text_color));
+        freq5.setTextColor(getResources().getColor(R.color.text_color));
+        title.setTextColor(getResources().getColor(R.color.text_color));
+        currTime.setTextColor(getResources().getColor(R.color.text_color));
+        allTime.setTextColor(getResources().getColor(R.color.text_color));
+        mood_t.setTextColor(getResources().getColor(R.color.text_color));
     }
     else{
         root.setBackground(getResources().getDrawable(R.drawable.st_3));

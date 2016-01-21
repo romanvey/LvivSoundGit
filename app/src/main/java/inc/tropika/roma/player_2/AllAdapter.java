@@ -51,7 +51,7 @@ public class AllAdapter extends BaseAdapter {
         if(MainActivity.settings.getInt(5)==1){
         title.setTextColor(MainActivity.ctx.getResources().getColor(R.color.text_color));
         }else{
-            title.setTextColor(MainActivity.ctx.getResources().getColor(R.color.text_color_dark));
+            title.setTextColor(MainActivity.ctx.getResources().getColor(R.color.text_color));
         }
         MainActivity.all.moveToPosition(position);
         title.setText(MainActivity.all.getString(MainActivity.TITLES_INT));

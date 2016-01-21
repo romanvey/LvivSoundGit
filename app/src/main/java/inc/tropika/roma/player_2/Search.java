@@ -44,9 +44,9 @@ FloatingActionButton fab;
        positiv =(TextView)view.findViewById(R.id.positiv);
        uncategory =(CheckBox)view.findViewById(R.id.uncategory);
         if(MainActivity.settings.getInt(5)==0){
-            root.setBackground(getResources().getDrawable(R.drawable.t2));
-            positiv.setTextColor(getResources().getColor(R.color.text_color_dark));
-            uncategory.setTextColor(getResources().getColor(R.color.text_color_dark));
+            root.setBackground(getResources().getDrawable(R.drawable.lv_1));
+            positiv.setTextColor(getResources().getColor(R.color.text_color));
+            uncategory.setTextColor(getResources().getColor(R.color.text_color));
         }
         else{
             root.setBackground(getResources().getDrawable(R.drawable.st_1));

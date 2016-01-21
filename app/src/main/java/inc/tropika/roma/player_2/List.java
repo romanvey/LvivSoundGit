@@ -25,7 +25,7 @@ public class List extends android.support.v4.app.Fragment {
         root =(RelativeLayout)v.findViewById(R.id.root);
         MainActivity.settings.moveToFirst();
         if(MainActivity.settings.getInt(5)==0){
-            root.setBackground(getResources().getDrawable(R.drawable.st_3));
+            root.setBackground(getResources().getDrawable(R.drawable.lv_2));
         }
         else{
             root.setBackground(getResources().getDrawable(R.drawable.st_2));
