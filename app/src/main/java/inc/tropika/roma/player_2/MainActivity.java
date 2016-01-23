@@ -739,8 +739,9 @@ public void init_db(){
         cv.put(DBHelper.FIRST_START, 1);
         db.insert(DBHelper.SETTINGS, null, cv);
         cv.clear();
-        editor.putInt(IS_FIRST_TIME,0);
+        editor.putInt(IS_FIRST_TIME, 0);
         editor.apply();
+        getAudio();
     }
 }
 
@@ -751,7 +752,9 @@ public void init_db(){
             Cursor c;
             int idi;
             boolean exist;
-
+            cursor=db.query(DBHelper.TABLE, null, null, null, null, null, null);
+            all=db.query(DBHelper.TABLE,null,null,null,null,null,null);
+            settings=db.query(DBHelper.SETTINGS,null,null,null,null,null,null);
             String s= MediaStore.Audio.Media.IS_MUSIC+" != 0";
             String[] p={MediaStore.Audio.Media._ID,MediaStore.Audio.Media.TITLE,MediaStore.Audio.Media.DATA};
             c = getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, p, s, null, null);
@@ -843,6 +846,8 @@ public void init_db(){
             builder.show();
         }else {
             if(UPDATE_DB){
+                MainActivity.ids.clear();
+                MainActivity.ids=new ArrayList<>();
                 getAudio();
                 UPDATE_DB=false;
                 List.ma.notifyDataSetChanged();
