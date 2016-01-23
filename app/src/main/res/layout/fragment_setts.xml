@@ -59,7 +59,7 @@
         <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Підсилення басів в пісні"
+        android:text="Підсилення басів"
         android:id="@+id/autostarting"
             android:layout_below="@+id/f2"
             android:layout_alignRight="@+id/f1"
