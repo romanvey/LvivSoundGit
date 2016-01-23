@@ -27,13 +27,14 @@ public class Setts extends android.support.v4.app.Fragment {
     int mist;
     SensorManager mySensorManager;
     Sensor myProximitySensor;
-    public static Button clear;
+    public static Button clear,upd;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        view =inflater.inflate(R.layout.fragment_setts, container, false);
         clear = (Button) view.findViewById(R.id.clear);
         mistake = (SeekBar) view.findViewById(R.id.mistake);
+        upd=(Button)view.findViewById(R.id.manual);
         f1 = (CheckBox) view.findViewById(R.id.f1);
         f2 = (CheckBox) view.findViewById(R.id.f2);
         f3 = (CheckBox) view.findViewById(R.id.autostarting);
@@ -45,6 +46,7 @@ public class Setts extends android.support.v4.app.Fragment {
         f4.setTypeface(MainActivity.tf);
         diapason.setTypeface(MainActivity.tf);
         clear.setTypeface(MainActivity.tf);
+        upd.setTypeface(MainActivity.tf);
 
 
         MainActivity.settings.moveToFirst();
@@ -73,32 +75,32 @@ public class Setts extends android.support.v4.app.Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.ctx, R.style.MyAlertDialogStyle);
                 builder.setTitle("Очищення");
                 builder.setMessage("Очистити весь настрій?");
-                builder.setNegativeButton("Скасувати",null);
-                builder.setPositiveButton("Очистити",new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("Скасувати", null);
+                builder.setPositiveButton("Очистити", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       if(MainActivity.IS_PLAYING) {
-                           try {
-                               MainActivity.server.stopSong();
-                               MainActivity.server.un_init();
-                           } catch (Exception e) {
-                               Log.d("State", "Nothing playing, error: " + e.toString());
-                           }
-                       }
+                        if (MainActivity.IS_PLAYING) {
+                            try {
+                                MainActivity.server.stopSong();
+                                MainActivity.server.un_init();
+                            } catch (Exception e) {
+                                Log.d("State", "Nothing playing, error: " + e.toString());
+                            }
+                        }
                         ContentValues cv = new ContentValues();
                         cv.put(DBHelper.MOOD, 101);
                         MainActivity.db.update(DBHelper.TABLE, cv, null, null);
                         cv.clear();
-                        MainActivity.cursor=MainActivity.db.rawQuery(Search.tmp, null);
-                        if(MainActivity.ids.size()>0) {
+                        MainActivity.cursor = MainActivity.db.rawQuery(Search.tmp, null);
+                        if (MainActivity.ids.size() > 0) {
                             MainActivity.ids.clear();
                             MainActivity.ids = new ArrayList<>();
                         }
-                        if(MainActivity.cursor.moveToFirst()){
-                            do{
+                        if (MainActivity.cursor.moveToFirst()) {
+                            do {
                                 MainActivity.ids.add(MainActivity.cursor.getString(MainActivity.TITLES_INT));
-                                Log.d("State", ""+MainActivity.cursor.getString(MainActivity.TITLES_INT));
-                            }while(MainActivity.cursor.moveToNext());
+                                Log.d("State", "" + MainActivity.cursor.getString(MainActivity.TITLES_INT));
+                            } while (MainActivity.cursor.moveToNext());
                         }
                         List.ma.notifyDataSetChanged();
                         List.nothing.setVisibility(View.VISIBLE);
@@ -114,7 +116,7 @@ public class Setts extends android.support.v4.app.Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 update();
-                diapason.setText("Діапазон: +/-"+progress);
+                diapason.setText("Діапазон: +/-" + progress);
             }
 
             @Override
@@ -131,7 +133,7 @@ public class Setts extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
                 update();
-                if(f1.isChecked()){
+                if (f1.isChecked()) {
                     mySensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
                     myProximitySensor = mySensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
                     if (myProximitySensor == null) {
@@ -159,6 +161,23 @@ public class Setts extends android.support.v4.app.Fragment {
                 update();
             }
         });
+
+
+
+
+
+
+upd.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        MainActivity.UPDATE_DB=true;
+       getActivity().onBackPressed();
+    }
+});
+
+
+
+
     }
 
 

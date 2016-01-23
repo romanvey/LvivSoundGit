@@ -148,7 +148,7 @@ public class HelpList extends android.support.v4.app.Fragment {
         s7=prefs.getString("s7","Пристрасний");
         s8=prefs.getString("s8","Веселий");
         s9=prefs.getString("s9","Енергійний");
-        s10=prefs.getString("s10","Для тренировок");
+        s10=prefs.getString("s10","Для тренувань");
         tx11.setText(s1);
         tx12.setText(s2);
         tx13.setText(s3);

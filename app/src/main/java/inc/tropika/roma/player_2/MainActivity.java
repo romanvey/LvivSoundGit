@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
     public static boolean IS_FIRST_TIME_BY_SESSION_INIT=true;
     public static boolean IS_FIRST_TIME_BY_SESSION_PLAY=true;
+    public static boolean UPDATE_DB=false;
     public static boolean IS_SHUFFLE=false;
     public static boolean IS_REPEAT=false;
     public static boolean IS_PLAYING=false;
@@ -161,8 +162,9 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         toast=new Toast(this);
         ScreenReceiver.count=0;
         if(ids.size()==0) {
-            getAudio();
+            init_db();//+ get audio if checked
         }
+
         settings.moveToFirst();
         STYLES=settings.getInt(5);
         if(settings.getInt(5)==1){
@@ -328,215 +330,6 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
        fr.commit();
    }
 public void style(){
-   /* settings.moveToFirst();
-    if(settings.getInt(5)==1){
-        tf = Typeface.createFromAsset(this.getAssets(), "DS_Moster.ttf");
-        AllAdapter aa=new AllAdapter(getBaseContext());
-        Search.list.setAdapter(aa);
-        Search.positiv.setTextColor(getResources().getColor(R.color.text_color));
-        Search.uncategory.setTextColor(getResources().getColor(R.color.text_color));
-        MusicAdapter ma=new MusicAdapter(this);
-        List.lv.setAdapter(ma);
-        Player.min1.setTextColor(getResources().getColor(R.color.text_color));
-        Player.min2.setTextColor(getResources().getColor(R.color.text_color));
-        Player.min3.setTextColor(getResources().getColor(R.color.text_color));
-        Player. min4.setTextColor(getResources().getColor(R.color.text_color));
-        Player. min5.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max1.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max2.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max3.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max4.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max5.setTextColor(getResources().getColor(R.color.text_color));
-        Player.freq1.setTextColor(getResources().getColor(R.color.text_color));
-        Player.freq2.setTextColor(getResources().getColor(R.color.text_color));
-        Player. freq3.setTextColor(getResources().getColor(R.color.text_color));
-        Player.freq4.setTextColor(getResources().getColor(R.color.text_color));
-        Player.freq5.setTextColor(getResources().getColor(R.color.text_color));
-        Player.title.setTextColor(getResources().getColor(R.color.text_color));
-        Player.currTime.setTextColor(getResources().getColor(R.color.text_color));
-        Player.allTime.setTextColor(getResources().getColor(R.color.text_color));
-        Player.mood_t.setTextColor(getResources().getColor(R.color.text_color));
-        Player.min1.setTypeface(MainActivity.tf);
-        Player.min2.setTypeface(MainActivity.tf);
-        Player.min3.setTypeface(MainActivity.tf);
-        Player.min4.setTypeface(MainActivity.tf);
-        Player.min5.setTypeface(MainActivity.tf);
-        Player.max1.setTypeface(MainActivity.tf);
-        Player.max2.setTypeface(MainActivity.tf);
-        Player.max3.setTypeface(MainActivity.tf);
-        Player.max4.setTypeface(MainActivity.tf);
-        Player.max5.setTypeface(MainActivity.tf);
-        Player.freq1.setTypeface(MainActivity.tf);
-        Player.freq2.setTypeface(MainActivity.tf);
-        Player.freq3.setTypeface(MainActivity.tf);
-        Player.freq4.setTypeface(MainActivity.tf);
-        Player.freq5.setTypeface(MainActivity.tf);
-        Player.currTime.setTypeface(MainActivity.tf);
-        Player.allTime.setTypeface(MainActivity.tf);
-        Player.title.setTypeface(MainActivity.tf);
-        Search.uncategory.setTypeface(MainActivity.tf);
-        Search.positiv.setTypeface(MainActivity.tf);
-        try {
-            Player.gest_txt.setTextColor(getResources().getColor(R.color.text_color));
-            Player.gest_txt.setTypeface(MainActivity.tf);
-        } catch (Resources.NotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            HelpList.ed1.setTypeface(MainActivity.tf);
-            HelpList.ed2.setTypeface(MainActivity.tf);
-            HelpList.ed3.setTypeface(MainActivity.tf);
-            HelpList.ed4.setTypeface(MainActivity.tf);
-            HelpList.ed5.setTypeface(MainActivity.tf);
-            HelpList.ed6.setTypeface(MainActivity.tf);
-            HelpList.ed7.setTypeface(MainActivity.tf);
-            HelpList.ed8.setTypeface(MainActivity.tf);
-            HelpList.ed9.setTypeface(MainActivity.tf);
-            HelpList.ed10.setTypeface(MainActivity.tf);
-            HelpList.save.setTypeface(MainActivity.tf);
-            HelpList.cancel.setTypeface(MainActivity.tf);
-            HelpList.mood.setTypeface(MainActivity.tf);
-            HelpList.tx1.setTypeface(MainActivity.tf);
-            HelpList.tx2.setTypeface(MainActivity.tf);
-            HelpList.tx3.setTypeface(MainActivity.tf);
-            HelpList.tx4.setTypeface(MainActivity.tf);
-            HelpList.tx5.setTypeface(MainActivity.tf);
-            HelpList.tx6.setTypeface(MainActivity.tf);
-            HelpList.tx7.setTypeface(MainActivity.tf);
-            HelpList.tx8.setTypeface(MainActivity.tf);
-            HelpList.tx9.setTypeface(MainActivity.tf);
-            HelpList.tx10.setTypeface(MainActivity.tf);
-            HelpList.tx11.setTypeface(MainActivity.tf);
-            HelpList. tx12.setTypeface(MainActivity.tf);
-            HelpList.tx13.setTypeface(MainActivity.tf);
-            HelpList.tx14.setTypeface(MainActivity.tf);
-            HelpList.tx15.setTypeface(MainActivity.tf);
-            HelpList.tx16.setTypeface(MainActivity.tf);
-            HelpList.tx17.setTypeface(MainActivity.tf);
-            HelpList.tx18.setTypeface(MainActivity.tf);
-            HelpList.tx19.setTypeface(MainActivity.tf);
-            HelpList.tx20.setTypeface(MainActivity.tf);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Setts.clear.setTypeface(MainActivity.tf);
-        Setts.f1.setTypeface(MainActivity.tf);
-        Setts.f2.setTypeface(MainActivity.tf);
-        Setts.f3.setTypeface(MainActivity.tf);
-        Setts.f4.setTypeface(MainActivity.tf);
-        Setts.diapason.setTypeface(MainActivity.tf);
-        Donate.btn.setTypeface(MainActivity.tf);
-        Player.mood_t.setTypeface(MainActivity.tf);
-
-            Search.root.setBackground(getResources().getDrawable(R.drawable.st_1));
-            List.root.setBackground(getResources().getDrawable(R.drawable.st_2));
-            Player.root.setBackground(getResources().getDrawable(R.drawable.st_3));
-            Donate.root.setBackground(getResources().getDrawable(R.drawable.st_4));
-    }else{
-        tf = Typeface.createFromAsset(this.getAssets(), "AGGalleonC.otf");
-        AllAdapter aa=new AllAdapter(getBaseContext());
-        Search.list.setAdapter(aa);
-        Search.positiv.setTextColor(getResources().getColor(R.color.text_color));
-        Search.uncategory.setTextColor(getResources().getColor(R.color.text_color));
-        MusicAdapter ma=new MusicAdapter(this);
-        List.lv.setAdapter(ma);
-        Player.min1.setTextColor(getResources().getColor(R.color.text_color));
-        Player.min2.setTextColor(getResources().getColor(R.color.text_color));
-        Player.min3.setTextColor(getResources().getColor(R.color.text_color));
-        Player. min4.setTextColor(getResources().getColor(R.color.text_color));
-        Player. min5.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max1.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max2.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max3.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max4.setTextColor(getResources().getColor(R.color.text_color));
-        Player.max5.setTextColor(getResources().getColor(R.color.text_color));
-        Player.freq1.setTextColor(getResources().getColor(R.color.text_color));
-        Player.freq2.setTextColor(getResources().getColor(R.color.text_color));
-        Player. freq3.setTextColor(getResources().getColor(R.color.text_color));
-        Player.freq4.setTextColor(getResources().getColor(R.color.text_color));
-        Player.freq5.setTextColor(getResources().getColor(R.color.text_color));
-        Player.title.setTextColor(getResources().getColor(R.color.text_color));
-        Player.currTime.setTextColor(getResources().getColor(R.color.text_color));
-        Player.allTime.setTextColor(getResources().getColor(R.color.text_color));
-        Player.mood_t.setTextColor(getResources().getColor(R.color.text_color));
-        Player.min1.setTypeface(MainActivity.tf);
-        Player.min2.setTypeface(MainActivity.tf);
-        Player.min3.setTypeface(MainActivity.tf);
-        Player.min4.setTypeface(MainActivity.tf);
-        Player.min5.setTypeface(MainActivity.tf);
-        Player.max1.setTypeface(MainActivity.tf);
-        Player.max2.setTypeface(MainActivity.tf);
-        Player.max3.setTypeface(MainActivity.tf);
-        Player.max4.setTypeface(MainActivity.tf);
-        Player.max5.setTypeface(MainActivity.tf);
-        Player.freq1.setTypeface(MainActivity.tf);
-        Player.freq2.setTypeface(MainActivity.tf);
-        Player.freq3.setTypeface(MainActivity.tf);
-        Player.freq4.setTypeface(MainActivity.tf);
-        Player.freq5.setTypeface(MainActivity.tf);
-        Player.currTime.setTypeface(MainActivity.tf);
-        Player.allTime.setTypeface(MainActivity.tf);
-        Player.title.setTypeface(MainActivity.tf);
-        Search.uncategory.setTypeface(MainActivity.tf);
-        Search.positiv.setTypeface(MainActivity.tf);
-        try {
-            Player.gest_txt.setTextColor(getResources().getColor(R.color.text_color));
-            Player.gest_txt.setTypeface(MainActivity.tf);
-        } catch (Resources.NotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            HelpList.ed1.setTypeface(MainActivity.tf);
-            HelpList.ed2.setTypeface(MainActivity.tf);
-            HelpList.ed3.setTypeface(MainActivity.tf);
-            HelpList.ed4.setTypeface(MainActivity.tf);
-            HelpList.ed5.setTypeface(MainActivity.tf);
-            HelpList.ed6.setTypeface(MainActivity.tf);
-            HelpList.ed7.setTypeface(MainActivity.tf);
-            HelpList.ed8.setTypeface(MainActivity.tf);
-            HelpList.ed9.setTypeface(MainActivity.tf);
-            HelpList.ed10.setTypeface(MainActivity.tf);
-            HelpList.save.setTypeface(MainActivity.tf);
-            HelpList.cancel.setTypeface(MainActivity.tf);
-            HelpList.mood.setTypeface(MainActivity.tf);
-            HelpList.tx1.setTypeface(MainActivity.tf);
-            HelpList.tx2.setTypeface(MainActivity.tf);
-            HelpList.tx3.setTypeface(MainActivity.tf);
-            HelpList.tx4.setTypeface(MainActivity.tf);
-            HelpList.tx5.setTypeface(MainActivity.tf);
-            HelpList.tx6.setTypeface(MainActivity.tf);
-            HelpList.tx7.setTypeface(MainActivity.tf);
-            HelpList.tx8.setTypeface(MainActivity.tf);
-            HelpList.tx9.setTypeface(MainActivity.tf);
-            HelpList.tx10.setTypeface(MainActivity.tf);
-            HelpList.tx11.setTypeface(MainActivity.tf);
-            HelpList. tx12.setTypeface(MainActivity.tf);
-            HelpList.tx13.setTypeface(MainActivity.tf);
-            HelpList.tx14.setTypeface(MainActivity.tf);
-            HelpList.tx15.setTypeface(MainActivity.tf);
-            HelpList.tx16.setTypeface(MainActivity.tf);
-            HelpList.tx17.setTypeface(MainActivity.tf);
-            HelpList.tx18.setTypeface(MainActivity.tf);
-            HelpList.tx19.setTypeface(MainActivity.tf);
-            HelpList.tx20.setTypeface(MainActivity.tf);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Setts.clear.setTypeface(MainActivity.tf);
-        Setts.f1.setTypeface(MainActivity.tf);
-        Setts.f2.setTypeface(MainActivity.tf);
-        Setts.f3.setTypeface(MainActivity.tf);
-        Setts.f4.setTypeface(MainActivity.tf);
-        Setts.diapason.setTypeface(MainActivity.tf);
-        Donate.btn.setTypeface(MainActivity.tf);
-        Player.mood_t.setTypeface(MainActivity.tf);
-
-            Search.root.setBackground(getResources().getDrawable(R.drawable.lv_1));
-            List.root.setBackground(getResources().getDrawable(R.drawable.lv_2));
-            Player.root.setBackground(getResources().getDrawable(R.drawable.lv_3));
-            Donate.root.setBackground(getResources().getDrawable(R.drawable.lv_4));
-    }
-    */
      settings.moveToFirst();
     if(STYLES!=settings.getInt(5)){
         AlertDialog.Builder builder_c = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
@@ -816,7 +609,7 @@ fr.commit();
         try {
             if(i==null){
                 i=new Intent(this,MyService.class);
-                bindService(i,con, Context.BIND_AUTO_CREATE);
+                bindService(i, con, Context.BIND_AUTO_CREATE);
                 startService(i);
             }
         } catch (Exception e) {
@@ -884,7 +677,7 @@ fr.commit();
     public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
         Intent startAlarm=new Intent(ctx,AlarmReceiver.class);
         startAlarm.setAction(ACTION_ALARM);
-        startAlarmPI = PendingIntent.getBroadcast(this,0,startAlarm,PendingIntent.FLAG_UPDATE_CURRENT);
+        startAlarmPI = PendingIntent.getBroadcast(this, 0, startAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
@@ -896,7 +689,7 @@ fr.commit();
           calendar.set(Calendar.DAY_OF_MONTH,calendar.get(Calendar.DAY_OF_MONTH)+1);
             createToast("Музику буде зупинено завтра в "+hourOfDay+":"+minute);
         }else{
-            createToast("Музику буде зупинено сьогодні в "+hourOfDay+":"+minute);
+            createToast("Музику буде зупинено сьогодні в " + hourOfDay + ":" + minute);
         }
 
         alarm.set(AlarmManager.RTC, calendar.getTimeInMillis(), startAlarmPI);
@@ -929,7 +722,27 @@ fr.commit();
 
 
 
+public void init_db(){
 
+    dbHelper=new DBHelper(this);
+    db=dbHelper.getWritableDatabase();
+    cursor=db.query(DBHelper.TABLE, null, null, null, null, null, null);
+    all=db.query(DBHelper.TABLE,null,null,null,null,null,null);
+    settings=db.query(DBHelper.SETTINGS,null,null,null,null,null,null);
+
+
+    prefs=getPreferences(MODE_PRIVATE);
+    editor=prefs.edit();
+    int isFirstTime=prefs.getInt(IS_FIRST_TIME,1);
+    Log.d("State","isFirstTime: "+isFirstTime);
+    if(isFirstTime==1) {
+        cv.put(DBHelper.FIRST_START, 1);
+        db.insert(DBHelper.SETTINGS, null, cv);
+        cv.clear();
+        editor.putInt(IS_FIRST_TIME,0);
+        editor.apply();
+    }
+}
 
 
     public void getAudio(){
@@ -938,28 +751,6 @@ fr.commit();
             Cursor c;
             int idi;
             boolean exist;
-            dbHelper=new DBHelper(this);
-            db=dbHelper.getWritableDatabase();
-            cursor=db.query(DBHelper.TABLE, null, null, null, null, null, null);
-            all=db.query(DBHelper.TABLE,null,null,null,null,null,null);
-            settings=db.query(DBHelper.SETTINGS,null,null,null,null,null,null);
-
-
-            prefs=getPreferences(MODE_PRIVATE);
-            editor=prefs.edit();
-            int isFirstTime=prefs.getInt(IS_FIRST_TIME,1);
-            Log.d("State","isFirstTime: "+isFirstTime);
-            if(isFirstTime==1) {
-                cv.put(DBHelper.FIRST_START, 1);
-                db.insert(DBHelper.SETTINGS, null, cv);
-                cv.clear();
-                editor.putInt(IS_FIRST_TIME,0);
-                editor.apply();
-            }
-
-
-
-
 
             String s= MediaStore.Audio.Media.IS_MUSIC+" != 0";
             String[] p={MediaStore.Audio.Media._ID,MediaStore.Audio.Media.TITLE,MediaStore.Audio.Media.DATA};
@@ -1051,6 +842,12 @@ fr.commit();
             builder.setCancelable(false);
             builder.show();
         }else {
+            if(UPDATE_DB){
+                getAudio();
+                UPDATE_DB=false;
+                List.ma.notifyDataSetChanged();
+                Search.aa.notifyDataSetChanged();
+            }
             if (PAGE == 0) {
                 done.setVisible(false);
                 hint.setVisible(true);

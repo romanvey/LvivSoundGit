@@ -29,7 +29,7 @@ FloatingActionButton fab;
     public static SeekBar search;
     int progress;
     public static ListView list;
-    AllAdapter aa;
+    public static AllAdapter aa;
     boolean enabled;
     public static RelativeLayout root;
     @Override
