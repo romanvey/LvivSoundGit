@@ -88,7 +88,8 @@ FloatingActionButton fab;
         int tmp_2=getMax();
 
         positiv.setTypeface(MainActivity.tf);
-        positiv.setText(R.string.mood_songs+": "+tmp_1+"-"+tmp_2);
+        String res=getResources().getString(R.string.mood_songs);
+        positiv.setText(String.format("%s: %s - %s", res, Integer.toString(tmp_1), Integer.toString(tmp_2)));
         uncategory.setTypeface(MainActivity.tf);
 
 
@@ -174,7 +175,8 @@ FloatingActionButton fab;
                 ed.commit();
                 int tmp_1=getMin();
                 int tmp_2=getMax();
-                positiv.setText(R.string.mood_songs+": "+tmp_1+"-"+tmp_2);
+                String res=getResources().getString(R.string.mood_songs);
+                positiv.setText(String.format("%s: %s - %s", res, Integer.toString(tmp_1), Integer.toString(tmp_2)));
             }
 
             @Override

@@ -43,7 +43,8 @@ public class List extends android.support.v4.app.Fragment {
                 if(MainActivity.cursor.getInt(MainActivity.MOOD_INT)==101) {
                     MainActivity.createToast(R.string.mood_unknown+"");
                 }else{
-                    MainActivity.createToast(R.string.mood+": " + MainActivity.cursor.getInt(MainActivity.MOOD_INT));
+                    String res=getResources().getString(R.string.mood_songs);
+                    MainActivity.createToast(String.format("%s: %s", res, Integer.toString(MainActivity.cursor.getInt(MainActivity.MOOD_INT))));
                 }
                 return true;
             }

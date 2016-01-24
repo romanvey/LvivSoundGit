@@ -2,7 +2,6 @@ package inc.tropika.roma.player_2;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.os.Handler;
 
 public class ScreenReceiver extends android.content.BroadcastReceiver {

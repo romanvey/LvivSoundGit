@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">MoodPlayer</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Lviv Sound</string>
     <string name="action_settings">Настройки</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_settings">Настройки</string>
     <string name="mood_string_1">Злий</string>
     <string name="mood_string_2">Стресовий</string>
     <string name="mood_string_3">Ніякий</string>
@@ -18,7 +14,7 @@
     <string name="mood_string_10">Для тренувань</string>
     <string name="mood">Настрій</string>
     <string name="mood_unknown">Настрій не вказано</string>
-    <string name="mood_songs">Настрій псні</string>
+    <string name="mood_songs">Настрій пісні</string>
     <string name="changes">Зміни</string>
     <string name="mess_to_reload">Щоб зміни вступили в силу перезавантажте плеєр</string>
     <string name="close">Вийти</string>
@@ -45,8 +41,6 @@
     <string name="clear">Очистити</string>
     <string name="diapason">Діапазон</string>
     <string name="move_detector_not_found">Не знайдено датчика руху</string>
-
-
 
 
 </resources>

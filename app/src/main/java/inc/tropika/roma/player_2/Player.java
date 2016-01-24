@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -63,7 +62,8 @@ public class Player extends android.support.v4.app.Fragment implements TextureVi
                 if(!MainActivity.IS_INIT){
                  mood_t.setText(R.string.mood_not_chosen);
                  }else if (progress != 0) {
-                 mood_t.setText(R.string.mood+": " + (progress - 1));
+                    String res=getResources().getString(R.string.mood);
+                 mood_t.setText(String.format("%s: %s", res, Integer.toString((progress - 1))));
                  }else{
                  mood_t.setText(R.string.mood_not_chosen);
                  }
@@ -235,7 +235,8 @@ public void style(){
                 Player.mood.setProgress(0);
                 Player.mood_t.setText(R.string.mood_not_chosen);
             }else{
-                Player.mood_t.setText(R.string.mood+": "+progress);
+                String res=getResources().getString(R.string.mood);
+                Player.mood_t.setText(String.format("%s: %s", res,Integer.toString(progress)));
                 progress++;
                 Player.mood.setProgress(progress);
 

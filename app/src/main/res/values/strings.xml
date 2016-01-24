@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">MoodPlayer</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Lviv Sound</string>
     <string name="action_settings">Настройки</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_settings">Настройки</string>
     <string name="mood_string_1">Злий</string>
     <string name="mood_string_2">Стресовий</string>
     <string name="mood_string_3">Ніякий</string>
@@ -16,4 +12,35 @@
     <string name="mood_string_8">Веселий</string>
     <string name="mood_string_9">Енергійний</string>
     <string name="mood_string_10">Для тренувань</string>
+    <string name="mood">Настрій</string>
+    <string name="mood_unknown">Настрій не вказано</string>
+    <string name="mood_songs">Настрій пісні</string>
+    <string name="changes">Зміни</string>
+    <string name="mess_to_reload">Щоб зміни вступили в силу перезавантажте плеєр</string>
+    <string name="close">Вийти</string>
+    <string name="autocomplete">Автозавершення</string>
+    <string name="mess_to_stop_alarm">Бажаєте вимкнути таймер?</string>
+    <string name="close_alarm">Вимкнути</string>
+    <string name="mess_alarm_closed">Автозавершення вимкнуто</string>
+    <string name="cancel">Скасувати</string>
+    <string name="song_not_chosen">Пісні не вибрано</string>
+    <string name="mood_not_changed">Настрій не змінено</string>
+    <string name="mood_saved">Настрій змінено</string>
+    <string name="when_stopped_today">Музику буде зупинено сьогодні в </string>
+    <string name="when_stopped_tomorrow">Музику буде зупинено завтра в </string>
+    <string name="exit">Вихід</string>
+    <string name="mess_to_exit">Ви справді бажаєте вийти?</string>
+    <string name="mood_not_chosen">Настрій не вказано</string>
+    <string name="songs_not_found">Пісень не знайдено</string>
+    <string name="founded">Знайдено</string>
+    <string name="song_1"> пісню</string>
+    <string name="song_2"> пісні</string>
+    <string name="song_3"> пісень</string>
+    <string name="clearing">Очищення</string>
+    <string name="mess_clear">Очистити весь настрій</string>
+    <string name="clear">Очистити</string>
+    <string name="diapason">Діапазон</string>
+    <string name="move_detector_not_found">Не знайдено датчика руху</string>
+
+
 </resources>

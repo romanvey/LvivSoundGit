@@ -17,7 +17,6 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PorterDuff;
@@ -306,8 +305,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
        }
        int tmp_1=Search.getMin();
        int tmp_2=Search.getMax();
-       Search.positiv.setText(R.string.mood_songs+": "+tmp_1+"-"+tmp_2);
-
+       String res=getResources().getString(R.string.mood_songs);
+       Search.positiv.setText(String.format("%s: %s - %s", res, Integer.toString(tmp_1), Integer.toString(tmp_2)));
 
         settings.moveToFirst();
        if(settings.getInt(2)==1&&!SENSOR_ALREADY_REGISTER) {

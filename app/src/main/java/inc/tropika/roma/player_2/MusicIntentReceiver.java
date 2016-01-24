@@ -2,9 +2,7 @@ package inc.tropika.roma.player_2;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.util.Log;
-import android.view.KeyEvent;
 
 public class MusicIntentReceiver extends android.content.BroadcastReceiver {
 

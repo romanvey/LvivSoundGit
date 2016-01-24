@@ -57,7 +57,8 @@ public class Setts extends android.support.v4.app.Fragment {
         f4check = MainActivity.settings.getInt(5) != 0;
 
         mistake.setProgress(mist);
-        diapason.setText(R.string.diapason+": +/-"+mist);
+        String res=getResources().getString(R.string.diapason);
+        diapason.setText(String.format("%s: +/-%s",res,Integer.toString(mist)));
         f1.setChecked(f1check);
         f2.setChecked(f2check);
         f3.setChecked(f3check);
@@ -116,7 +117,8 @@ public class Setts extends android.support.v4.app.Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 update();
-                diapason.setText(R.string.diapason+": +/-" + progress);
+                String res=getResources().getString(R.string.diapason);
+                diapason.setText(String.format("%s: +/-%s", res,Integer.toString(progress)));
             }
 
             @Override
