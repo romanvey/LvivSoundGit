@@ -41,9 +41,9 @@ public class List extends android.support.v4.app.Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 MainActivity.cursor.moveToPosition(position);
                 if(MainActivity.cursor.getInt(MainActivity.MOOD_INT)==101) {
-                    MainActivity.createToast("Настрій не задано");
+                    MainActivity.createToast(R.string.mood_unknown+"");
                 }else{
-                    MainActivity.createToast("Настрій: " + MainActivity.cursor.getInt(MainActivity.MOOD_INT));
+                    MainActivity.createToast(R.string.mood+": " + MainActivity.cursor.getInt(MainActivity.MOOD_INT));
                 }
                 return true;
             }

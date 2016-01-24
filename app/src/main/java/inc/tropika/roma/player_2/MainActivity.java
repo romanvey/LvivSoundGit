@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
        }
        int tmp_1=Search.getMin();
        int tmp_2=Search.getMax();
-       Search.positiv.setText("Настрій пісні: "+tmp_1+"-"+tmp_2);
+       Search.positiv.setText(R.string.mood_songs+": "+tmp_1+"-"+tmp_2);
 
 
         settings.moveToFirst();
@@ -333,9 +333,9 @@ public void style(){
      settings.moveToFirst();
     if(STYLES!=settings.getInt(5)){
         AlertDialog.Builder builder_c = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
-        builder_c.setTitle("Зміни");
-        builder_c.setMessage("Щоб зміни вступили в силу перезавантажте плеєр");
-        builder_c.setNegativeButton("Вийти з плеєра", new DialogInterface.OnClickListener() {
+        builder_c.setTitle(R.string.changes+"");
+        builder_c.setMessage(R.string.mess_to_reload);
+        builder_c.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -437,15 +437,15 @@ fr.commit();
     public void sleeping(){
         if(IS_ALARM_CREATED){
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
-            builder.setTitle("Автозавершення");
-            builder.setMessage("Бажаєте вимкнути таймер?");
-            builder.setNegativeButton("Скасувати",null);
-            builder.setPositiveButton("Вимкнути",new DialogInterface.OnClickListener() {
+            builder.setTitle(R.string.autocomplete+"");
+            builder.setMessage(R.string.mess_to_stop_alarm+"");
+            builder.setNegativeButton(R.string.cancel+"",null);
+            builder.setPositiveButton(R.string.close_alarm+"",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     alarm.cancel(startAlarmPI);
                     IS_ALARM_CREATED=false;
-                    createToast("Автозавершення вимкнуто");
+                    createToast(R.string.mess_alarm_closed+"");
                 }
             });
             builder.setCancelable(false);
@@ -458,7 +458,7 @@ fr.commit();
             }else{
                 tpd.setThemeDark(false);
             }
-            tpd.setTitle("Автозавершення");
+            tpd.setTitle(R.string.autocomplete+"");
             tpd.show(getFragmentManager(), "TimePicker");
             Log.d("State", "MainActivity: sleeping()");
         }
@@ -468,17 +468,17 @@ fr.commit();
     public void saving(){
         Log.d("State", "MainActivity: saving()");
         if(!MainActivity.IS_INIT){
-            createToast("Пісні не вибрано");
+            createToast(R.string.song_not_chosen+"");
             return;
         }
         String where="SELECT * FROM "+DBHelper.TABLE+" WHERE "+DBHelper.IDS+"="+id;
         Cursor cursor_tmp=db.rawQuery(where,null);
         cursor_tmp.moveToFirst();
       if(((Player.mood.getProgress() - 1) == cursor_tmp.getInt(MOOD_INT)) || ((Player.mood.getProgress() == 0)&&(cursor_tmp.getInt(MOOD_INT)==101))){
-          createToast("Настрій не змінено");
+          createToast(R.string.mood_not_changed+"");
           Log.d("State","Pos = "+cursor_tmp.getPosition()+" mood = "+cursor_tmp.getInt(MOOD_INT)+" new_mood = "+(Player.mood.getProgress()-1)+" id = "+cursor_tmp.getInt(IDS_INT)+" =");
       }else{
-          createToast("Настрій збережено");
+          createToast(R.string.mood_saved+"");
           if(Player.mood.getProgress()==0){
               Log.d("State","Pos = "+cursor_tmp.getPosition()+" mood = "+cursor_tmp.getInt(MOOD_INT)+" new_mood = 101 id = "+cursor_tmp.getInt(IDS_INT));
               cv.put(DBHelper.MOOD,101);
@@ -687,9 +687,9 @@ fr.commit();
         Log.d("State", calendar.getTimeInMillis() + " " + System.currentTimeMillis() + " " + ((calendar.getTimeInMillis() - System.currentTimeMillis()) / 1000));
         if(calendar.getTimeInMillis()-System.currentTimeMillis()<=0){
           calendar.set(Calendar.DAY_OF_MONTH,calendar.get(Calendar.DAY_OF_MONTH)+1);
-            createToast("Музику буде зупинено завтра в "+hourOfDay+":"+minute);
+            createToast(R.string.when_stopped_tomorrow+hourOfDay+":"+minute);
         }else{
-            createToast("Музику буде зупинено сьогодні в " + hourOfDay + ":" + minute);
+            createToast(R.string.when_stopped_today + hourOfDay + ":" + minute);
         }
 
         alarm.set(AlarmManager.RTC, calendar.getTimeInMillis(), startAlarmPI);
@@ -829,10 +829,10 @@ public void init_db(){
     public void onBackPressed() {
         if(child.getVisibility()==View.VISIBLE){
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
-            builder.setTitle("Вихід");
-            builder.setMessage("Ви справді бажаєте вийти?");
-            builder.setNegativeButton("Скасувати",null);
-            builder.setPositiveButton("Вийти",new DialogInterface.OnClickListener() {
+            builder.setTitle(R.string.exit+"");
+            builder.setMessage(R.string.mess_to_exit+"");
+            builder.setNegativeButton(R.string.cancel+"",null);
+            builder.setPositiveButton(R.string.close+"",new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(Intent.ACTION_MAIN);

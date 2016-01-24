@@ -298,9 +298,9 @@ public  void playerLayout(){
 
     if(progress==101){
         Player.mood.setProgress(0);
-        Player.mood_t.setText("Настрій  не задано");
+        Player.mood_t.setText(R.string.mood_not_chosen);
     }else{
-        Player.mood_t.setText("Настрій: "+progress);
+        Player.mood_t.setText(R.string.mood+": "+progress);
         progress++;
         Player.mood.setProgress(progress);
 
@@ -335,7 +335,7 @@ public  void playerLayout(){
        Player.title.setText("");
         Player.currTime.setText("00:00");
         Player.allTime.setText("00:00");
-        Player.mood_t.setText("Настрій не задано");
+        Player.mood_t.setText(R.string.mood_not_chosen);
         Player.mood.setProgress(0);
         Player.duration.setProgress(0);
         MainActivity.IS_INIT=false;

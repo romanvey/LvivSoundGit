@@ -88,7 +88,7 @@ FloatingActionButton fab;
         int tmp_2=getMax();
 
         positiv.setTypeface(MainActivity.tf);
-        positiv.setText("Настрій пісні: "+tmp_1+"-"+tmp_2);
+        positiv.setText(R.string.mood_songs+": "+tmp_1+"-"+tmp_2);
         uncategory.setTypeface(MainActivity.tf);
 
 
@@ -125,9 +125,9 @@ FloatingActionButton fab;
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 MainActivity.all.moveToPosition(position);
                 if(MainActivity.all.getInt(MainActivity.MOOD_INT)==101) {
-                    MainActivity.createToast("Настрій не задано");
+                    MainActivity.createToast(R.string.mood_not_chosen+"");
                 }else{
-                    MainActivity.createToast("Настрій: " + MainActivity.all.getInt(MainActivity.MOOD_INT));
+                    MainActivity.createToast(R.string.mood+": " + MainActivity.all.getInt(MainActivity.MOOD_INT));
                 }
                 return true;
             }
@@ -174,7 +174,7 @@ FloatingActionButton fab;
                 ed.commit();
                 int tmp_1=getMin();
                 int tmp_2=getMax();
-                positiv.setText("Настрій пісні: "+tmp_1+"-"+tmp_2);
+                positiv.setText(R.string.mood_songs+": "+tmp_1+"-"+tmp_2);
             }
 
             @Override
@@ -232,18 +232,18 @@ FloatingActionButton fab;
     public void toast(){
         Log.d("State","Search: toast()");
         if(MainActivity.ids.size()==0){
-            MainActivity.createToast("Не знайдено пісень");
+            MainActivity.createToast(R.string.songs_not_found+"");
             List.nothing.setVisibility(View.VISIBLE);
             List.lv.setVisibility(View.INVISIBLE);
         }else{
             List.nothing.setVisibility(View.INVISIBLE);
             List.lv.setVisibility(View.VISIBLE);
             if(MainActivity.ids.size()%10==1) {
-                MainActivity.createToast("Знайдено " + MainActivity.ids.size() + " пісню");
+                MainActivity.createToast(R.string.founded+" " + MainActivity.ids.size() +" "+R.string.song_1);
             }else if(MainActivity.ids.size()%10==2 || MainActivity.ids.size()%10==3 || MainActivity.ids.size()%10==4){
-                MainActivity.createToast("Знайдено " + MainActivity.ids.size() + " пісні");
+                MainActivity.createToast(R.string.founded+" " + MainActivity.ids.size() +" "+R.string.song_2);
             }else{
-                MainActivity.createToast("Знайдено " + MainActivity.ids.size() + " пісень");
+                MainActivity.createToast(R.string.founded+" " + MainActivity.ids.size() +" "+ R.string.song_3);
             }
             drag(1);
         }

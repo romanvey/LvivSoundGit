@@ -139,16 +139,27 @@ public class HelpList extends android.support.v4.app.Fragment {
     }
 
     public void getData(){
-        s1=prefs.getString("s1","Злий");
-        s2=prefs.getString("s2","Стресовий");
-        s3=prefs.getString("s3","Ніякий");
-        s4=prefs.getString("s4","Спокійний");
-        s5=prefs.getString("s5","Звичайний");
-        s6=prefs.getString("s6","Хороший");
-        s7=prefs.getString("s7","Пристрасний");
-        s8=prefs.getString("s8","Веселий");
-        s9=prefs.getString("s9","Енергійний");
-        s10=prefs.getString("s10","Для тренувань");
+        String mood;
+        mood = getResources().getString(R.string.mood_string_1);
+        s1=prefs.getString("s1", mood);
+        mood = getResources().getString(R.string.mood_string_2);
+        s2=prefs.getString("s2", mood);
+        mood = getResources().getString(R.string.mood_string_3);
+        s3 = prefs.getString("s3", mood);
+        mood = getResources().getString(R.string.mood_string_4);
+        s4 = prefs.getString("s4", mood);
+        mood = getResources().getString(R.string.mood_string_5);
+        s5 = prefs.getString("s5", mood);
+        mood = getResources().getString(R.string.mood_string_6);
+        s6 = prefs.getString("s6", mood);
+        mood = getResources().getString(R.string.mood_string_7);
+        s7 = prefs.getString("s7", mood);
+        mood = getResources().getString(R.string.mood_string_8);
+        s8 = prefs.getString("s8", mood);
+        mood = getResources().getString(R.string.mood_string_9);
+        s9 = prefs.getString("s9", mood);
+        mood = getResources().getString(R.string.mood_string_10);
+        s10 = prefs.getString("s10", mood);
         tx11.setText(s1);
         tx12.setText(s2);
         tx13.setText(s3);

@@ -57,7 +57,7 @@ public class Setts extends android.support.v4.app.Fragment {
         f4check = MainActivity.settings.getInt(5) != 0;
 
         mistake.setProgress(mist);
-        diapason.setText("Діапазон: +/-"+mist);
+        diapason.setText(R.string.diapason+": +/-"+mist);
         f1.setChecked(f1check);
         f2.setChecked(f2check);
         f3.setChecked(f3check);
@@ -73,10 +73,10 @@ public class Setts extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.ctx, R.style.MyAlertDialogStyle);
-                builder.setTitle("Очищення");
-                builder.setMessage("Очистити весь настрій?");
-                builder.setNegativeButton("Скасувати", null);
-                builder.setPositiveButton("Очистити", new DialogInterface.OnClickListener() {
+                builder.setTitle(R.string.clearing);
+                builder.setMessage(R.string.mess_clear);
+                builder.setNegativeButton(R.string.cancel, null);
+                builder.setPositiveButton(R.string.clear, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (MainActivity.IS_PLAYING) {
@@ -116,7 +116,7 @@ public class Setts extends android.support.v4.app.Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 update();
-                diapason.setText("Діапазон: +/-" + progress);
+                diapason.setText(R.string.diapason+": +/-" + progress);
             }
 
             @Override
@@ -137,7 +137,7 @@ public class Setts extends android.support.v4.app.Fragment {
                     mySensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
                     myProximitySensor = mySensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
                     if (myProximitySensor == null) {
-                        MainActivity.createToast("Не знайдено датчика");
+                        MainActivity.createToast(R.string.move_detector_not_found+"");
                         f1.setChecked(false);
                     }
                 }
