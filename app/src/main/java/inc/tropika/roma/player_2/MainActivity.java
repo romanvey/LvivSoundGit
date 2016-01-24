@@ -305,8 +305,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
        }
        int tmp_1=Search.getMin();
        int tmp_2=Search.getMax();
-       String res=getResources().getString(R.string.mood_songs);
-       Search.positiv.setText(String.format("%s: %s - %s", res, Integer.toString(tmp_1), Integer.toString(tmp_2)));
+       Search.positiv.setText(String.format("%s: %s - %s",getResources().getString(R.string.mood_songs), Integer.toString(tmp_1), Integer.toString(tmp_2)));
 
         settings.moveToFirst();
        if(settings.getInt(2)==1&&!SENSOR_ALREADY_REGISTER) {
@@ -332,8 +331,9 @@ public void style(){
      settings.moveToFirst();
     if(STYLES!=settings.getInt(5)){
         AlertDialog.Builder builder_c = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
-        builder_c.setTitle(R.string.changes+"");
-        builder_c.setMessage(R.string.mess_to_reload);
+        builder_c.setTitle(getResources().getString(R.string.changes));
+
+        builder_c.setMessage(getResources().getString(R.string.mess_to_reload));
         builder_c.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -436,15 +436,15 @@ fr.commit();
     public void sleeping(){
         if(IS_ALARM_CREATED){
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
-            builder.setTitle(R.string.autocomplete+"");
-            builder.setMessage(R.string.mess_to_stop_alarm+"");
-            builder.setNegativeButton(R.string.cancel+"",null);
-            builder.setPositiveButton(R.string.close_alarm+"",new DialogInterface.OnClickListener() {
+            builder.setTitle(getResources().getString(R.string.autocomplete));
+            builder.setMessage(getResources().getString(R.string.mess_to_stop_alarm));
+            builder.setNegativeButton(getResources().getString(R.string.cancel),null);
+            builder.setPositiveButton(getResources().getString(R.string.close_alarm),new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     alarm.cancel(startAlarmPI);
                     IS_ALARM_CREATED=false;
-                    createToast(R.string.mess_alarm_closed+"");
+                    createToast(getResources().getString(R.string.mess_alarm_closed));
                 }
             });
             builder.setCancelable(false);
@@ -457,7 +457,7 @@ fr.commit();
             }else{
                 tpd.setThemeDark(false);
             }
-            tpd.setTitle(R.string.autocomplete+"");
+            tpd.setTitle(getResources().getString(R.string.autocomplete));
             tpd.show(getFragmentManager(), "TimePicker");
             Log.d("State", "MainActivity: sleeping()");
         }
@@ -467,17 +467,17 @@ fr.commit();
     public void saving(){
         Log.d("State", "MainActivity: saving()");
         if(!MainActivity.IS_INIT){
-            createToast(R.string.song_not_chosen+"");
+            createToast(getResources().getString(R.string.song_not_chosen));
             return;
         }
         String where="SELECT * FROM "+DBHelper.TABLE+" WHERE "+DBHelper.IDS+"="+id;
         Cursor cursor_tmp=db.rawQuery(where,null);
         cursor_tmp.moveToFirst();
       if(((Player.mood.getProgress() - 1) == cursor_tmp.getInt(MOOD_INT)) || ((Player.mood.getProgress() == 0)&&(cursor_tmp.getInt(MOOD_INT)==101))){
-          createToast(R.string.mood_not_changed+"");
+          createToast(getResources().getString(R.string.mood_not_changed));
           Log.d("State","Pos = "+cursor_tmp.getPosition()+" mood = "+cursor_tmp.getInt(MOOD_INT)+" new_mood = "+(Player.mood.getProgress()-1)+" id = "+cursor_tmp.getInt(IDS_INT)+" =");
       }else{
-          createToast(R.string.mood_saved+"");
+          createToast(getResources().getString(R.string.mood_saved));
           if(Player.mood.getProgress()==0){
               Log.d("State","Pos = "+cursor_tmp.getPosition()+" mood = "+cursor_tmp.getInt(MOOD_INT)+" new_mood = 101 id = "+cursor_tmp.getInt(IDS_INT));
               cv.put(DBHelper.MOOD,101);
@@ -685,10 +685,10 @@ fr.commit();
         IS_ALARM_CREATED=true;
         Log.d("State", calendar.getTimeInMillis() + " " + System.currentTimeMillis() + " " + ((calendar.getTimeInMillis() - System.currentTimeMillis()) / 1000));
         if(calendar.getTimeInMillis()-System.currentTimeMillis()<=0){
-          calendar.set(Calendar.DAY_OF_MONTH,calendar.get(Calendar.DAY_OF_MONTH)+1);
-            createToast(R.string.when_stopped_tomorrow+hourOfDay+":"+minute);
+          calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
+            createToast(String.format("%s %s:%s",getResources().getString(R.string.when_stopped_tomorrow),Integer.toString(hourOfDay),Integer.toString(minute)));
         }else{
-            createToast(R.string.when_stopped_today + hourOfDay + ":" + minute);
+            createToast(String.format("%s %s:%s",getResources().getString(R.string.when_stopped_today),Integer.toString(hourOfDay),Integer.toString(minute)));
         }
 
         alarm.set(AlarmManager.RTC, calendar.getTimeInMillis(), startAlarmPI);
@@ -828,10 +828,10 @@ public void init_db(){
     public void onBackPressed() {
         if(child.getVisibility()==View.VISIBLE){
             AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
-            builder.setTitle(R.string.exit+"");
-            builder.setMessage(R.string.mess_to_exit+"");
-            builder.setNegativeButton(R.string.cancel+"",null);
-            builder.setPositiveButton(R.string.close+"",new DialogInterface.OnClickListener() {
+            builder.setTitle(getResources().getString(R.string.exit));
+            builder.setMessage(getResources().getString(R.string.mess_to_exit));
+            builder.setNegativeButton(getResources().getString(R.string.cancel),null);
+            builder.setPositiveButton(getResources().getString(R.string.close),new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(Intent.ACTION_MAIN);

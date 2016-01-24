@@ -60,12 +60,12 @@ public class Player extends android.support.v4.app.Fragment implements TextureVi
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(!MainActivity.IS_INIT){
-                 mood_t.setText(R.string.mood_not_chosen);
+                 mood_t.setText(getResources().getString(R.string.mood_not_chosen));
                  }else if (progress != 0) {
                     String res=getResources().getString(R.string.mood);
                  mood_t.setText(String.format("%s: %s", res, Integer.toString((progress - 1))));
                  }else{
-                 mood_t.setText(R.string.mood_not_chosen);
+                 mood_t.setText(getResources().getString(R.string.mood_not_chosen));
                  }
             }
 
@@ -233,7 +233,7 @@ public void style(){
 
             if(progress==101){
                 Player.mood.setProgress(0);
-                Player.mood_t.setText(R.string.mood_not_chosen);
+                Player.mood_t.setText(getResources().getString(R.string.mood_not_chosen));
             }else{
                 String res=getResources().getString(R.string.mood);
                 Player.mood_t.setText(String.format("%s: %s", res,Integer.toString(progress)));

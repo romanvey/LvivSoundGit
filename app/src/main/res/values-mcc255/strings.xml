@@ -26,8 +26,8 @@
     <string name="song_not_chosen">Пісні не вибрано</string>
     <string name="mood_not_changed">Настрій не змінено</string>
     <string name="mood_saved">Настрій змінено</string>
-    <string name="when_stopped_today">Музику буде зупинено сьогодні в </string>
-    <string name="when_stopped_tomorrow">Музику буде зупинено завтра в </string>
+    <string name="when_stopped_today">Музику буде зупинено сьогодні в</string>
+    <string name="when_stopped_tomorrow">Музику буде зупинено завтра в</string>
     <string name="exit">Вихід</string>
     <string name="mess_to_exit">Ви справді бажаєте вийти?</string>
     <string name="mood_not_chosen">Настрій не вказано</string>

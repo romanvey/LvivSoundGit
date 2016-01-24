@@ -126,7 +126,7 @@ FloatingActionButton fab;
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 MainActivity.all.moveToPosition(position);
                 if(MainActivity.all.getInt(MainActivity.MOOD_INT)==101) {
-                    MainActivity.createToast(R.string.mood_not_chosen+"");
+                    MainActivity.createToast(getResources().getString(R.string.mood_not_chosen));
                 }else{
                     MainActivity.createToast(R.string.mood+": " + MainActivity.all.getInt(MainActivity.MOOD_INT));
                 }
@@ -234,18 +234,18 @@ FloatingActionButton fab;
     public void toast(){
         Log.d("State","Search: toast()");
         if(MainActivity.ids.size()==0){
-            MainActivity.createToast(R.string.songs_not_found+"");
+            MainActivity.createToast(getResources().getString(R.string.songs_not_found));
             List.nothing.setVisibility(View.VISIBLE);
             List.lv.setVisibility(View.INVISIBLE);
         }else{
             List.nothing.setVisibility(View.INVISIBLE);
             List.lv.setVisibility(View.VISIBLE);
             if(MainActivity.ids.size()%10==1) {
-                MainActivity.createToast(R.string.founded+" " + MainActivity.ids.size() +" "+R.string.song_1);
+                MainActivity.createToast(String.format("%s %s %s",getResources().getString(R.string.founded),Integer.toString(MainActivity.ids.size()),getResources().getString(R.string.song_1)));
             }else if(MainActivity.ids.size()%10==2 || MainActivity.ids.size()%10==3 || MainActivity.ids.size()%10==4){
-                MainActivity.createToast(R.string.founded+" " + MainActivity.ids.size() +" "+R.string.song_2);
+                MainActivity.createToast(String.format("%s %s %s",getResources().getString(R.string.founded),Integer.toString(MainActivity.ids.size()),getResources().getString(R.string.song_2)));
             }else{
-                MainActivity.createToast(R.string.founded+" " + MainActivity.ids.size() +" "+ R.string.song_3);
+                MainActivity.createToast(String.format("%s %s %s",getResources().getString(R.string.founded),Integer.toString(MainActivity.ids.size()),getResources().getString(R.string.song_3)));
             }
             drag(1);
         }

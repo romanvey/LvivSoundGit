@@ -41,7 +41,7 @@ public class List extends android.support.v4.app.Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 MainActivity.cursor.moveToPosition(position);
                 if(MainActivity.cursor.getInt(MainActivity.MOOD_INT)==101) {
-                    MainActivity.createToast(R.string.mood_unknown+"");
+                    MainActivity.createToast(getResources().getString(R.string.mood_unknown));
                 }else{
                     String res=getResources().getString(R.string.mood_songs);
                     MainActivity.createToast(String.format("%s: %s", res, Integer.toString(MainActivity.cursor.getInt(MainActivity.MOOD_INT))));

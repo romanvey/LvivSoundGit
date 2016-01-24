@@ -24,10 +24,10 @@
     <string name="mess_alarm_closed">Sleep timer off</string>
     <string name="cancel">Cancel</string>
     <string name="song_not_chosen">Songs are not selected</string>
-    <string name="mood_not_changed">Mood  didn't change</string>
+    <string name="mood_not_changed">Mood  didn\'t change</string>
     <string name="mood_saved">Mood changed</string>
-    <string name="when_stopped_today">The music will stop today at </string>
-    <string name="when_stopped_tomorrow">The music will stop tomorrow at </string>
+    <string name="when_stopped_today">The music will stop today at</string>
+    <string name="when_stopped_tomorrow">The music will stop tomorrow at</string>
     <string name="exit">Exit</string>
     <string name="mess_to_exit">Do you really want to leave?</string>
     <string name="mood_not_chosen">Mood is not specified</string>

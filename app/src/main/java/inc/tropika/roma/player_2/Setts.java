@@ -74,10 +74,10 @@ public class Setts extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.ctx, R.style.MyAlertDialogStyle);
-                builder.setTitle(R.string.clearing);
-                builder.setMessage(R.string.mess_clear);
-                builder.setNegativeButton(R.string.cancel, null);
-                builder.setPositiveButton(R.string.clear, new DialogInterface.OnClickListener() {
+                builder.setTitle(getResources().getString(R.string.clearing));
+                builder.setMessage(getResources().getString(R.string.mess_clear));
+                builder.setNegativeButton(getResources().getString(R.string.cancel), null);
+                builder.setPositiveButton(getResources().getString(R.string.clear), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (MainActivity.IS_PLAYING) {
