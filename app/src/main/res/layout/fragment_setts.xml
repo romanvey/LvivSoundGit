@@ -14,7 +14,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Пауза при наведені руки на датчик (затримати на 1с)"
+        android:text="@string/f1_hover"
         android:id="@+id/f1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -26,7 +26,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Грати наступну пісню якщо 2 рази нажати кнопку живлення за 3 секунди"
+        android:text="@string/f2_pause"
         android:id="@+id/f2"
         android:layout_below="@+id/f1"
         android:layout_alignParentLeft="true"
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Діапазон: +/-10"
+        android:text="@string/diapason_tmp"
         android:id="@+id/text_mist"
         android:textAlignment="center"
         android:layout_below="@+id/mistake"
@@ -60,7 +60,7 @@
         <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Підсилення басів"
+        android:text="@string/f3_bass"
         android:id="@+id/autostarting"
             android:layout_below="@+id/f2"
             android:layout_alignRight="@+id/f1"
@@ -80,7 +80,7 @@
         android:textColor="#ffffffff"
         android:visibility="visible"
         android:checked="false"
-        android:text="Плитковий стиль"
+        android:text="@string/f4_style"
         android:layout_below="@+id/autostarting"
         android:layout_alignRight="@+id/f1"
         android:layout_alignEnd="@+id/f1"
@@ -89,7 +89,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Оновити список пісень"
+            android:text="@string/update_songs"
             android:id="@+id/manual"
             android:layout_marginLeft="10dp"
             android:layout_centerHorizontal="true"
@@ -100,7 +100,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Очистити настрій"
+            android:text="@string/clear_mood"
             android:id="@+id/clear"
             android:layout_below="@+id/text_mist"
             android:layout_centerHorizontal="true"

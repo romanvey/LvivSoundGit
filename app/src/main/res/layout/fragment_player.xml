@@ -25,7 +25,7 @@
         android:id="@+id/mood_t"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/mood"
-        android:text="Настрій  не задано"
+        android:text="@string/mood_not_chosen"
         android:textColor="@color/text_color" />
 
     <SeekBar
@@ -92,22 +92,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Жести"
+        android:text="@string/gest"
         android:layout_centerHorizontal="true"
         android:id="@+id/gest_txt"
         android:visibility="gone"
         android:layout_marginTop="200dp" />
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bass Boost"
-        android:id="@+id/tmp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="101dp"
-        android:visibility="gone" />
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -380,6 +370,7 @@
                 android:id="@+id/seekBar5"
                 android:layout_toLeftOf="@+id/textView15"
                 android:layout_alignEnd="@+id/seekBar"
+                android:layout_alignRight="@+id/seekBar"
                 android:layout_alignTop="@+id/textView16"
                 android:layout_toRightOf="@+id/textView16"
                 android:layout_toEndOf="@+id/textView16" />

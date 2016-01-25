@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
     <item android:id="@+id/action_sleep"
-        android:title="Автозавершення"
+        android:title="@string/autocomplete"
         android:orderInCategory="5"
         app:showAsAction="never"/>
     <item android:id="@+id/action_settings"

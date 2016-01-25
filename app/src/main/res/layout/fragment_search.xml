@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Позитив (15-45)"
+        android:text="@string/mood_tmp"
         android:id="@+id/positiv"
         android:textStyle="bold"
         android:textColor="#373737"
@@ -36,7 +36,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Додати пісні без настрою"
+        android:text="@string/add_songs_without_mood"
         android:id="@+id/uncategory"
         android:checked="false"
         android:textStyle="bold"

@@ -7,7 +7,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="На цій сторінці буде радіо або щось інше"
+        android:text="Tmp text"
         android:id="@+id/button2"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"

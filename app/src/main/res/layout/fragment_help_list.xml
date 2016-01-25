@@ -1,5 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/st_3"
     android:id="@+id/root_list">
@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Настрій"
+        android:text="@string/mood"
         android:id="@+id/textView37"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -155,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Злий"
+                android:text="@string/mood_string_1"
                 android:id="@+id/textView27"
                 android:layout_alignTop="@+id/textView17"
                 android:layout_centerHorizontal="true" />
@@ -164,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Стресовий"
+                android:text="@string/mood_string_2"
                 android:id="@+id/textView28"
                 android:layout_alignTop="@+id/textView18"
                 android:layout_centerHorizontal="true" />
@@ -173,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Ніякий"
+                android:text="@string/mood_string_3"
                 android:id="@+id/textView29"
                 android:layout_alignTop="@+id/textView19"
                 android:layout_centerHorizontal="true" />
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Спокійний"
+                android:text="@string/mood_string_4"
                 android:id="@+id/textView30"
                 android:layout_alignTop="@+id/textView20"
                 android:layout_centerHorizontal="true" />
@@ -191,7 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Звичайний"
+                android:text="@string/mood_string_5"
                 android:id="@+id/textView31"
                 android:layout_alignTop="@+id/textView21"
                 android:layout_centerHorizontal="true" />
@@ -203,13 +203,13 @@
                 android:id="@+id/textView32"
                 android:layout_above="@+id/textView23"
                 android:layout_centerHorizontal="true"
-                android:text="Хороший" />
+                android:text="@string/mood_string_6"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Пристрасний"
+                android:text="@string/mood_string_7"
                 android:id="@+id/textView33"
                 android:layout_alignTop="@+id/textView23"
                 android:layout_centerHorizontal="true" />
@@ -218,7 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Веселий"
+                android:text="@string/mood_string_8"
                 android:id="@+id/textView34"
                 android:layout_alignTop="@+id/textView24"
                 android:layout_centerHorizontal="true" />
@@ -227,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Енергійний"
+                android:text="@string/mood_string_9"
                 android:id="@+id/textView35"
                 android:layout_alignTop="@+id/textView25"
                 android:layout_centerHorizontal="true" />
@@ -236,7 +236,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Для тренувань"
+                android:text="@string/mood_string_10"
                 android:id="@+id/textView36"
                 android:layout_alignTop="@+id/textView26"
                 android:layout_centerHorizontal="true" />
@@ -348,7 +348,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Скасувати"
+        android:text="@string/cancel"
         android:id="@+id/cancel"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -359,7 +359,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Зберегти"
+        android:text="@string/save"
         android:id="@+id/button"
         android:layout_alignTop="@+id/cancel"
         android:layout_alignParentLeft="true"

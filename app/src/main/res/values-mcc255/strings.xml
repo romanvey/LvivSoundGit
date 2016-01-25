@@ -41,6 +41,16 @@
     <string name="clear">Очистити</string>
     <string name="diapason">Діапазон</string>
     <string name="move_detector_not_found">Не знайдено датчика руху</string>
-
+    <string name="save">Зберегти</string>
+    <string name="gest">Жести</string>
+    <string name="add_songs_without_mood">Додати пісні без настрою</string>
+    <string name="mood_tmp">Настрій: 15–45</string>
+    <string name="f1_hover">Грати наступну пісню якщо 2 рази нажати кнопку живлення за 3 секунди</string>
+    <string name="f2_pause">Пауза при наведені руки на датчик (затримати на 1с)</string>
+    <string name="f3_bass">Підсилення басів</string>
+    <string name="f4_style">Плитковий стиль</string>
+    <string name="clear_mood">Очистити настрій</string>
+    <string name="update_songs">Оновити список пісень</string>
+    <string name="diapason_tmp">Діапазон: +/-10</string>
 
 </resources>
