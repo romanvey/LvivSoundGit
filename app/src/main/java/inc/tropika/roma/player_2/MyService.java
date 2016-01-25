@@ -35,7 +35,11 @@ public class MyService extends Service{
         Log.d("State", "MyService: onCreate()");
         utils=new Utils(getApplicationContext());
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        try {
             initMusicPlayer();
+        } catch (Exception e) {
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
     }
 
 

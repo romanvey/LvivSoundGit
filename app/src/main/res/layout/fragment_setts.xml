@@ -44,7 +44,7 @@
         android:layout_below="@+id/repeating"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="150dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -82,9 +82,8 @@
         android:checked="false"
         android:text="@string/f4_style"
         android:layout_below="@+id/autostarting"
-        android:layout_alignRight="@+id/f1"
-        android:layout_alignEnd="@+id/f1"
-        android:layout_marginTop="20dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
         <Button
             android:layout_width="match_parent"
@@ -106,6 +105,26 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="220dp"
             android:layout_marginLeft="10dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lang"
+            android:id="@+id/fn5_eng"
+            android:checked="false"
+            android:layout_below="@+id/fn6_upd"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/auto_update"
+            android:id="@+id/fn6_upd"
+            android:layout_below="@+id/repeating"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
 
     </RelativeLayout>
 </ScrollView>

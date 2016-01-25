@@ -49,12 +49,14 @@ import android.widget.RelativeLayout;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public static int pos = -1;
     public static int id = -1;
     public static int STYLES;
+    public static int LANGUAGES;
     public static int cursor_numb;
     public static int duration = -1;
     final int CHECKING_TIME=2;
@@ -148,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         if(getResources().getConfiguration().orientation==Configuration.ORIENTATION_LANDSCAPE) {
             need_orient=true;
@@ -160,12 +164,10 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         toast=new Toast(this);
         ScreenReceiver.count=0;
-        if(ids.size()==0) {
-            init_db();//+ get audio if checked
-        }
 
-        settings.moveToFirst();
-        STYLES=settings.getInt(5);
+
+        init_app();
+
         if(settings.getInt(5)==1){
             tf = Typeface.createFromAsset(this.getAssets(), "DS_Moster.ttf");
         }else{
@@ -258,16 +260,20 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
         }
     }
    public void doneSetts(){
-       int tmp1,tmp2,tmp3,tmp4;
+       int tmp1,tmp2,tmp3,tmp4,tmp5,tmp6;
        if(Setts.f1.isChecked()){tmp1=1;}else{tmp1=0;}
        if(Setts.f2.isChecked()){tmp2=1;}else{tmp2=0;}
        if(Setts.f3.isChecked()){tmp3=1;}else{tmp3=0;}
        if(Setts.f4.isChecked()){tmp4=1;}else{tmp4=0;}
+       if(Setts.f5.isChecked()){tmp5=1;}else{tmp5=0;}
+       if(Setts.f6.isChecked()){tmp6=1;}else{tmp6=0;}
        cv.put(DBHelper.MISTAKE,Setts.mistake.getProgress());
        cv.put(DBHelper.F1,tmp1);
        cv.put(DBHelper.F2,tmp2);
        cv.put(DBHelper.F3,tmp3);
        cv.put(DBHelper.F4,tmp4);
+       cv.put(DBHelper.F5,tmp5);
+       cv.put(DBHelper.F6,tmp6);
        db.update(DBHelper.SETTINGS, cv, null, null);
        cv.clear();
        settings=db.query(DBHelper.SETTINGS,null,null,null,null,null,null);
@@ -329,7 +335,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
    }
 public void style(){
      settings.moveToFirst();
-    if(STYLES!=settings.getInt(5)){
+    if(STYLES!=settings.getInt(5)||LANGUAGES!=settings.getInt(7)){
         AlertDialog.Builder builder_c = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
         builder_c.setTitle(getResources().getString(R.string.changes));
 
@@ -458,6 +464,8 @@ fr.commit();
                 tpd.setThemeDark(false);
             }
             tpd.setTitle(getResources().getString(R.string.autocomplete));
+            tpd.setCancelText(getResources().getString(R.string.cancel));
+            tpd.setOkText(getResources().getString(R.string.alarm_ok));
             tpd.show(getFragmentManager(), "TimePicker");
             Log.d("State", "MainActivity: sleeping()");
         }
@@ -671,9 +679,8 @@ fr.commit();
     }
 
 
-
     @Override
-    public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
         Intent startAlarm=new Intent(ctx,AlarmReceiver.class);
         startAlarm.setAction(ACTION_ALARM);
         startAlarmPI = PendingIntent.getBroadcast(this, 0, startAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -685,7 +692,7 @@ fr.commit();
         IS_ALARM_CREATED=true;
         Log.d("State", calendar.getTimeInMillis() + " " + System.currentTimeMillis() + " " + ((calendar.getTimeInMillis() - System.currentTimeMillis()) / 1000));
         if(calendar.getTimeInMillis()-System.currentTimeMillis()<=0){
-          calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
+            calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
             createToast(String.format("%s %s:%s",getResources().getString(R.string.when_stopped_tomorrow),Integer.toString(hourOfDay),Integer.toString(minute)));
         }else{
             createToast(String.format("%s %s:%s",getResources().getString(R.string.when_stopped_today),Integer.toString(hourOfDay),Integer.toString(minute)));
@@ -720,14 +727,13 @@ fr.commit();
     }
 
 
-
-public void init_db(){
+public void init_app(){
 
     dbHelper=new DBHelper(this);
     db=dbHelper.getWritableDatabase();
     cursor=db.query(DBHelper.TABLE, null, null, null, null, null, null);
-    all=db.query(DBHelper.TABLE,null,null,null,null,null,null);
-    settings=db.query(DBHelper.SETTINGS,null,null,null,null,null,null);
+    all=db.query(DBHelper.TABLE, null, null, null, null, null, null);
+    settings=db.query(DBHelper.SETTINGS, null, null, null, null, null, null);
 
 
     prefs=getPreferences(MODE_PRIVATE);
@@ -742,6 +748,36 @@ public void init_db(){
         editor.apply();
         getAudio();
     }
+
+    String languageToLoad;
+    settings.moveToFirst();
+    if(settings.getInt(7)==0){
+        languageToLoad="uk";
+    }else{
+        languageToLoad="en";
+    }
+    Locale locale = new Locale(languageToLoad);
+    Locale.setDefault(locale);
+    Configuration config = new Configuration();
+    config.locale = locale;
+    getBaseContext().getResources().updateConfiguration(config,
+            getBaseContext().getResources().getDisplayMetrics());
+
+
+
+
+
+
+
+    settings.moveToFirst();
+    if(settings.getInt(8)==1){
+        if(ids.size()==0) {
+            getAudio();
+        }
+    }
+    settings.moveToFirst();
+    STYLES=settings.getInt(5);
+    LANGUAGES=settings.getInt(7);
 }
 
 

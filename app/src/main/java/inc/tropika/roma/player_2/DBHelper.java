@@ -15,6 +15,8 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
     public static final String F2="f2";
     public static final String F3="f3";
     public static final String F4="f4";
+    public static final String F5="f5";
+    public static final String F6="f6";
     public static final String MISTAKE="mistake";
     public static final String FIRST_START="first";
 
@@ -35,7 +37,7 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
     public void onCreate(SQLiteDatabase db) {
         Log.d("State", "DBHelper: OnCreate()");
         db.execSQL("CREATE TABLE "+TABLE+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+IDS+" INTEGER, "+TITLES+" TEXT, "+PATHS+" TEXT, "+MOOD+" INTEGER DEFAULT 101);");
-        db.execSQL("CREATE TABLE "+SETTINGS+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+MISTAKE+" INTEGER DEFAULT 10, "+F1+" INTEGER DEFAULT 1, "+F2+" INTEGER DEFAULT 1, "+F3+" INTEGER DEFAULT 1, "+F4+" INTEGER DEFAULT 0, "+FIRST_START+" INTEGER DEFAULT 0);");
+        db.execSQL("CREATE TABLE "+SETTINGS+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+MISTAKE+" INTEGER DEFAULT 10, "+F1+" INTEGER DEFAULT 1, "+F2+" INTEGER DEFAULT 1, "+F3+" INTEGER DEFAULT 1, "+F4+" INTEGER DEFAULT 0, "+FIRST_START+" INTEGER DEFAULT 0, "+F5+" INTEGER DEFAULT 0, "+F6+" INTEGER DEFAULT 0);");
     }
 
     @Override

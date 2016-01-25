@@ -21,9 +21,9 @@ import java.util.ArrayList;
 public class Setts extends android.support.v4.app.Fragment {
     View view;
     public static SeekBar mistake;
-    public static CheckBox f1,f2,f3,f4;
+    public static CheckBox f1,f2,f3,f4,f5,f6;
     public static  TextView diapason;
-    boolean f1check,f2check,f3check,f4check;
+    boolean f1check,f2check,f3check,f4check,f5check,f6check;
     int mist;
     SensorManager mySensorManager;
     Sensor myProximitySensor;
@@ -39,11 +39,15 @@ public class Setts extends android.support.v4.app.Fragment {
         f2 = (CheckBox) view.findViewById(R.id.f2);
         f3 = (CheckBox) view.findViewById(R.id.autostarting);
         f4 = (CheckBox) view.findViewById(R.id.repeating);
+        f5 = (CheckBox) view.findViewById(R.id.fn5_eng);
+        f6 = (CheckBox) view.findViewById(R.id.fn6_upd);
         diapason = (TextView) view.findViewById(R.id.text_mist);
         f1.setTypeface(MainActivity.tf);
         f2.setTypeface(MainActivity.tf);
         f3.setTypeface(MainActivity.tf);
         f4.setTypeface(MainActivity.tf);
+        f5.setTypeface(MainActivity.tf);
+        f6.setTypeface(MainActivity.tf);
         diapason.setTypeface(MainActivity.tf);
         clear.setTypeface(MainActivity.tf);
         upd.setTypeface(MainActivity.tf);
@@ -55,6 +59,8 @@ public class Setts extends android.support.v4.app.Fragment {
         f2check = MainActivity.settings.getInt(3) != 0;
         f3check = MainActivity.settings.getInt(4) != 0;
         f4check = MainActivity.settings.getInt(5) != 0;
+        f5check = MainActivity.settings.getInt(7) != 0;
+        f6check = MainActivity.settings.getInt(8) != 0;
 
         mistake.setProgress(mist);
         String res=getResources().getString(R.string.diapason);
@@ -63,6 +69,8 @@ public class Setts extends android.support.v4.app.Fragment {
         f2.setChecked(f2check);
         f3.setChecked(f3check);
         f4.setChecked(f4check);
+        f5.setChecked(f5check);
+        f6.setChecked(f6check);
         listeners();
         return view;
     }
@@ -117,8 +125,8 @@ public class Setts extends android.support.v4.app.Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 update();
-                String res=getResources().getString(R.string.diapason);
-                diapason.setText(String.format("%s: +/-%s", res,Integer.toString(progress)));
+                String res = getResources().getString(R.string.diapason);
+                diapason.setText(String.format("%s: +/-%s", res, Integer.toString(progress)));
             }
 
             @Override
@@ -139,7 +147,7 @@ public class Setts extends android.support.v4.app.Fragment {
                     mySensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
                     myProximitySensor = mySensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
                     if (myProximitySensor == null) {
-                        MainActivity.createToast(R.string.move_detector_not_found+"");
+                        MainActivity.createToast(R.string.move_detector_not_found + "");
                         f1.setChecked(false);
                     }
                 }
@@ -158,6 +166,18 @@ public class Setts extends android.support.v4.app.Fragment {
             }
         });
         f4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update();
+            }
+        });
+        f5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update();
+            }
+        });
+        f6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 update();
@@ -191,9 +211,11 @@ upd.setOnClickListener(new View.OnClickListener() {
         f2check = MainActivity.settings.getInt(3) != 0;
         f3check = MainActivity.settings.getInt(4) != 0;
         f4check = MainActivity.settings.getInt(5) != 0;
-
+        f5check = MainActivity.settings.getInt(7) != 0;
+        f6check = MainActivity.settings.getInt(8) != 0;
         if((MainActivity.settings.getInt(1)==mistake.getProgress())&&(f1check==f1.isChecked())
-                &&(f2check==f2.isChecked())&&(f3check==f3.isChecked())&&(f4check==f4.isChecked())){
+                &&(f2check==f2.isChecked())&&(f3check==f3.isChecked())&&(f4check==f4.isChecked())&&
+                (f5check==f5.isChecked())&&(f6check==f6.isChecked())){
             MainActivity.done.setVisible(false);
         }else{
             MainActivity.done.setVisible(true);
