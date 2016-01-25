@@ -784,7 +784,7 @@ public void init_app(){
     public void getAudio(){
         Log.d("State", "MainActivity: getAudio()");
         try {
-            
+
             Cursor c;
             int idi;
             boolean exist;
