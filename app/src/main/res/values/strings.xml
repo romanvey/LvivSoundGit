@@ -41,16 +41,16 @@
     <string name="clear">Clear</string>
     <string name="diapason">Range</string>
     <string name="move_detector_not_found">Not found the motion sensor</string>
-    <string name="save">Зберегти(en)</string>
-    <string name="gest">Жести(en)</string>
-    <string name="add_songs_without_mood">Додати пісні без настрою(en)</string>
-    <string name="mood_tmp">Настрій: 15–45(en)</string>
-    <string name="f1_hover">Грати наступну пісню якщо 2 рази нажати кнопку живлення за 3 секунди(en)</string>
-    <string name="f2_pause">Пауза при наведені руки на датчик (затримати на 1с)(en)</string>
-    <string name="f3_bass">Підсилення басів(en)</string>
-    <string name="f4_style">Плитковий стиль(en)</string>
-    <string name="clear_mood">Очистити настрій(en)</string>
-    <string name="update_songs">Оновити список пісень(en)</string>
-    <string name="diapason_tmp">Діапазон: +/-10(en)</string>
+    <string name="save">Save</string>
+    <string name="gest">Gestures</string>
+    <string name="add_songs_without_mood">Add songs without mood</string>
+    <string name="mood_tmp">Mood: 15–45</string>
+    <string name="f1_hover">Play next song if 2 times click the power button in 3 seconds</string>
+    <string name="f2_pause">Pause if close the motion sensor (1 sec delay)</string>
+    <string name="f3_bass">Bass boost</string>
+    <string name="f4_style">Tile theme</string>
+    <string name="clear_mood">Clear the mood</string>
+    <string name="update_songs">Refresh the range of songs</string>
+    <string name="diapason_tmp">Range: +/-10</string>
 
 </resources>
