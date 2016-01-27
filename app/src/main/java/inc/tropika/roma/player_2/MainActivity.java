@@ -380,13 +380,13 @@ public void boosting(){
                     case Configuration.SCREENLAYOUT_SIZE_XLARGE:
                     case Configuration.SCREENLAYOUT_SIZE_LARGE:
                         params = (ViewGroup.MarginLayoutParams) Search.list.getLayoutParams();
-                        params.setMargins(0, 0, 75, 0);
+                        params.setMargins(0, 0, 0, 0);
                         Search.list.setLayoutParams(params);
                         break;
                     case Configuration.SCREENLAYOUT_SIZE_SMALL:
                     case Configuration.SCREENLAYOUT_SIZE_NORMAL:
                         params = (ViewGroup.MarginLayoutParams) Search.list.getLayoutParams();
-                        params.setMargins(0, 0, 75, 0);
+                        params.setMargins(0, 0, 0, 0);
                         Search.list.setLayoutParams(params);
                         Player.gov.setVisibility(View.GONE);
                         Player.gest_txt.setVisibility(View.GONE);
@@ -405,13 +405,13 @@ public void boosting(){
                     case Configuration.SCREENLAYOUT_SIZE_XLARGE:
                     case Configuration.SCREENLAYOUT_SIZE_LARGE:
                         params = (ViewGroup.MarginLayoutParams) Search.list.getLayoutParams();
-                        params.setMargins(0, 150, 75, 0);
+                        params.setMargins(0, 150, 0, 0);
                         Search.list.setLayoutParams(params);
                         break;
                     case Configuration.SCREENLAYOUT_SIZE_SMALL:
                     case Configuration.SCREENLAYOUT_SIZE_NORMAL:
                         params = (ViewGroup.MarginLayoutParams) Search.list.getLayoutParams();
-                        params.setMargins(0, 150, 75, 0);
+                        params.setMargins(0, 150, 0, 0);
                         Search.list.setLayoutParams(params);
                         Player.rootLayout.setVisibility(View.VISIBLE);
                         Player.gov.setVisibility(View.GONE);

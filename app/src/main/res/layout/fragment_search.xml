@@ -17,7 +17,7 @@
         android:layout_below="@+id/search"
         android:layout_alignLeft="@+id/search"
         android:layout_alignStart="@+id/search"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
         android:textSize="20dp" />
 
@@ -63,15 +63,12 @@
         android:layout_marginBottom="20dp" />
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:id="@+id/listView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/uncategory"
         android:layout_marginTop="150dp"
-        android:background="@drawable/border"
-        android:layout_toLeftOf="@+id/fab"
-        android:layout_toStartOf="@+id/fab"
-        android:layout_marginRight="75dp" />
+        android:background="@drawable/border" />
 </RelativeLayout>
