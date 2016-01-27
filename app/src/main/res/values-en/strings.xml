@@ -48,12 +48,12 @@
     <string name="f1_hover">Play next song if 2 times click the power button in 3 seconds</string>
     <string name="f2_pause">Pause if close the motion sensor (1 sec delay)</string>
     <string name="f3_bass">Bass boost</string>
-    <string name="f4_style">Tile theme</string>
+    <string name="f4_style">Tile theme (Need reload)</string>
     <string name="clear_mood">Clear the mood</string>
     <string name="update_songs">Refresh the range of songs</string>
     <string name="diapason_tmp">Range: +/-10</string>
     <string name="alarm_ok">Start</string>
-    <string name="lang">English</string>
+    <string name="lang">English version (Need reload)</string>
     <string name="auto_update">Autoupdate song on startup</string>
 
 </resources>

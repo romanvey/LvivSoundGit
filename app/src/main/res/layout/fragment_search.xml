@@ -17,8 +17,9 @@
         android:layout_below="@+id/search"
         android:layout_alignLeft="@+id/search"
         android:layout_alignStart="@+id/search"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="20dp" />
 
     <SeekBar
         android:layout_width="match_parent"
@@ -41,9 +42,10 @@
         android:checked="false"
         android:textStyle="bold"
         android:textColor="@color/text_color"
+        android:textSize="20dp"
         android:layout_below="@+id/positiv"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignLeft="@+id/positiv"
+        android:layout_alignStart="@+id/positiv" />
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -68,7 +70,8 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/uncategory"
         android:layout_marginTop="150dp"
-        android:layout_alignRight="@+id/uncategory"
-        android:layout_alignEnd="@+id/uncategory"
-        android:background="@drawable/border" />
+        android:background="@drawable/border"
+        android:layout_toLeftOf="@+id/fab"
+        android:layout_toStartOf="@+id/fab"
+        android:layout_marginRight="75dp" />
 </RelativeLayout>
