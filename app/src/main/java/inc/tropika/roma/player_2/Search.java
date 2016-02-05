@@ -240,9 +240,9 @@ FloatingActionButton fab;
         }else{
             List.nothing.setVisibility(View.INVISIBLE);
             List.lv.setVisibility(View.VISIBLE);
-            if(MainActivity.ids.size()%10==1) {
+            if(MainActivity.ids.size()%10==1&&MainActivity.ids.size()%100!=11) {
                 MainActivity.createToast(String.format("%s %s %s",getResources().getString(R.string.founded),Integer.toString(MainActivity.ids.size()),getResources().getString(R.string.song_1)));
-            }else if(MainActivity.ids.size()%10==2 || MainActivity.ids.size()%10==3 || MainActivity.ids.size()%10==4){
+            }else if((MainActivity.ids.size()%10==2 || MainActivity.ids.size()%10==3 || MainActivity.ids.size()%10==4)&&(MainActivity.ids.size()%100!=12||MainActivity.ids.size()%100!=13||MainActivity.ids.size()%100!=14)){
                 MainActivity.createToast(String.format("%s %s %s",getResources().getString(R.string.founded),Integer.toString(MainActivity.ids.size()),getResources().getString(R.string.song_2)));
             }else{
                 MainActivity.createToast(String.format("%s %s %s",getResources().getString(R.string.founded),Integer.toString(MainActivity.ids.size()),getResources().getString(R.string.song_3)));

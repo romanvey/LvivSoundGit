@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public static RelativeLayout child;
     public static boolean bound = false;
     public static ArrayList<String> ids = new ArrayList<>();
+    public static String[] radio_titles=new String[2];
+    public static String[] radio_paths=new String[2];
     public static final int IDS_INT=1;
     public static final int TITLES_INT=2;
     public static final int PATHS_INT=3;
@@ -608,6 +610,7 @@ fr.commit();
     protected void onStart() {
         super.onStart();
         Log.d("State", "MainActivity: OnStart()");
+        loadLang();
         IS_HIDDEN=false;
         if(MainActivity.IS_PLAYING&&MainActivity.IS_INIT){
             Player.video.start();
@@ -714,7 +717,7 @@ fr.commit();
                 case 0:return new Search();
                 case 1:return new List();
                 case 2:return new Player();
-                case 3:return new Donate();
+                case 3:return new Radio();
                 default: return null;
             }
         }
@@ -727,7 +730,31 @@ fr.commit();
     }
 
 
+    protected void loadLang(){
+        String languageToLoad;
+        settings.moveToFirst();
+        if(settings.getInt(7)==0){
+            languageToLoad="uk";
+        }else{
+            languageToLoad="en";
+        }
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+    }
+
+
+
 public void init_app(){
+
+    radio_titles[0]="Радіо Сковорода";
+    radio_titles[1]="Львівська хвиля";
+    radio_paths[0]="http://195.248.234.62:8000/radioskovoroda";
+    radio_paths[1]="http://onair.lviv.fm:8000/lviv.fm";
+
 
     dbHelper=new DBHelper(this);
     db=dbHelper.getWritableDatabase();
@@ -749,23 +776,8 @@ public void init_app(){
         getAudio();
     }
 
-    String languageToLoad;
-    settings.moveToFirst();
-    if(settings.getInt(7)==0){
-        languageToLoad="uk";
-    }else{
-        languageToLoad="en";
-    }
-    Locale locale = new Locale(languageToLoad);
-    Locale.setDefault(locale);
-    Configuration config = new Configuration();
-    config.locale = locale;
-    getBaseContext().getResources().updateConfiguration(config,
-            getBaseContext().getResources().getDisplayMetrics());
 
-
-
-
+    loadLang();
 
 
 

@@ -22,7 +22,7 @@
         android:checked="false"
         android:layout_marginTop="15dp"
         android:textColor="#ffffffff"
-        android:textSize="17dp" />
+        android:textSize="20dp" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
         android:layout_alignParentStart="true"
         android:checked="false"
         android:textColor="#ffffffff"
-        android:textSize="17dp" />
+        android:textSize="20dp" />
 
     <SeekBar
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
         android:layout_below="@+id/mistake"
         android:layout_centerHorizontal="true"
         android:textColor="@color/accentColor"
-        android:textSize="19dp" />
+        android:textSize="21dp" />
 
         <CheckBox
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@
         android:textColor="#ffffffff"
         android:visibility="visible"
         android:checked="false"
-            android:textSize="17dp" />
+            android:textSize="20dp" />
 
     <CheckBox
         android:layout_width="match_parent"
@@ -88,7 +88,7 @@
         android:layout_below="@+id/autostarting"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="17dp" />
+        android:textSize="20dp" />
 
         <Button
             android:layout_width="match_parent"
@@ -99,7 +99,8 @@
             android:layout_centerHorizontal="true"
             android:layout_below
                 ="@+id/text_mist"
-            android:layout_marginTop="110dp" />
+            android:layout_marginTop="110dp"
+            android:textSize="16dp" />
 
         <Button
             android:layout_width="match_parent"
@@ -109,7 +110,8 @@
             android:layout_below="@+id/text_mist"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="10dp" />
+            android:layout_marginLeft="10dp"
+            android:textSize="16dp" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -120,7 +122,7 @@
             android:layout_below="@+id/fn6_upd"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="17dp" />
+            android:textSize="20dp" />
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -131,7 +133,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:checked="false"
-            android:textSize="17dp" />
+            android:textSize="20dp" />
 
     </RelativeLayout>
 </ScrollView>

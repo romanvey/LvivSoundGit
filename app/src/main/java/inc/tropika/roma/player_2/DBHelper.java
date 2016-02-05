@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper implements BaseColumns {
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d("State", "DBHelper: OnCreate()");
-        db.execSQL("CREATE TABLE "+TABLE+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+IDS+" INTEGER, "+TITLES+" TEXT, "+PATHS+" TEXT, "+MOOD+" INTEGER DEFAULT 101);");
+        db.execSQL("CREATE TABLE " + TABLE + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " + IDS + " INTEGER, " + TITLES + " TEXT, " + PATHS + " TEXT, " + MOOD + " INTEGER DEFAULT 101);");
         db.execSQL("CREATE TABLE "+SETTINGS+" (_id INTEGER PRIMARY KEY AUTOINCREMENT, "+MISTAKE+" INTEGER DEFAULT 10, "+F1+" INTEGER DEFAULT 1, "+F2+" INTEGER DEFAULT 1, "+F3+" INTEGER DEFAULT 1, "+F4+" INTEGER DEFAULT 0, "+FIRST_START+" INTEGER DEFAULT 0, "+F5+" INTEGER DEFAULT 0, "+F6+" INTEGER DEFAULT 0);");
     }
 

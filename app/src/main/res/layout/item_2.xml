@@ -19,5 +19,5 @@
         android:shadowColor="#ff000000"
         android:shadowDx="-1"
         android:shadowDy="-1"
-        android:shadowRadius="4" />
+        android:shadowRadius="6" />
 </LinearLayout>
