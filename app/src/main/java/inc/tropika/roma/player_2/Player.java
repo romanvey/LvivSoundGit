@@ -249,7 +249,7 @@ public void style(){
         duration.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if(MainActivity.IS_INIT){
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO){
                     currTime.setText(utils.milliSecondsToTimer(progress));
                 }
             }
@@ -261,7 +261,7 @@ public void style(){
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                if(MainActivity.IS_INIT) {
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO) {
                     MainActivity.server.seekTo(seekBar.getProgress());
                 }else{
                     seekBar.setProgress(0);
@@ -289,7 +289,7 @@ public void style(){
                         repeat.getDrawable().setColorFilter(getResources().getColor(R.color.primaryColor), PorterDuff.Mode.MULTIPLY);
                     }
                 }
-                if(!MainActivity.IS_INIT){
+                if(!MainActivity.IS_INIT&&!MainActivity.IS_RADIO){
                     shuffle.getDrawable().setColorFilter(getResources().getColor(R.color.primaryColor), PorterDuff.Mode.MULTIPLY);
                     MainActivity.IS_SHUFFLE=false;
                 }
@@ -321,7 +321,7 @@ public void style(){
                     }
                     MainActivity.IS_REPEAT=true;
                 }
-                if(!MainActivity.IS_INIT){
+                if(!MainActivity.IS_INIT&&!MainActivity.IS_RADIO){
                     repeat.getDrawable().setColorFilter(getResources().getColor(R.color.primaryColor), PorterDuff.Mode.MULTIPLY);
                     MainActivity.IS_REPEAT=false;
                 }
@@ -344,7 +344,7 @@ public void style(){
                 next.getDrawable().setColorFilter(getResources().getColor(R.color.accentColor), PorterDuff.Mode.MULTIPLY);
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
                 next.getDrawable().setColorFilter(getResources().getColor(R.color.primaryColor), PorterDuff.Mode.MULTIPLY);
-                if(MainActivity.IS_INIT) {
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO) {
                     Log.d("State", "Next song selected");
                     MainActivity.server.musicCompleted();
                 }
@@ -361,7 +361,7 @@ public void style(){
                 prev.getDrawable().setColorFilter(getResources().getColor(R.color.accentColor), PorterDuff.Mode.MULTIPLY);
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
                 prev.getDrawable().setColorFilter(getResources().getColor(R.color.primaryColor), PorterDuff.Mode.MULTIPLY);
-                if(MainActivity.IS_INIT) {
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO) {
                     Log.d("State", "Previous song selected");
                     MainActivity.server.prev();
                 }
@@ -383,7 +383,7 @@ if(MainActivity.IS_PLAYING) {
             if(event.getAction() == MotionEvent.ACTION_DOWN) {
                 play.getDrawable().setColorFilter(getResources().getColor(R.color.accentColor), PorterDuff.Mode.MULTIPLY);
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                if(MainActivity.IS_INIT) {
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP) {
                     if (MainActivity.IS_PLAYING) {
                         MainActivity.server.pauseSong();
                     } else {
@@ -406,7 +406,7 @@ if(MainActivity.IS_PLAYING) {
         Log.d("State", "Player: gestures()");
         gov.setOnTouchListener(new OnSwipeTouchListener(getActivity().getBaseContext()) {
             public void onSwipeTop() {
-                if(MainActivity.IS_INIT){
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP){
                     if(MainActivity.VOLUME<100f){
                         MainActivity.VOLUME+=10f;
                         MainActivity.server.setVolume();
@@ -420,7 +420,7 @@ if(MainActivity.IS_PLAYING) {
 
 
             public void onSwipeRight() {
-                if(MainActivity.IS_INIT){
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO){
                     if(duration.getProgress()+20000>=MainActivity.duration){
                         MainActivity.server.musicCompleted();
                     }else{
@@ -433,7 +433,7 @@ if(MainActivity.IS_PLAYING) {
 
 
             public void onSwipeLeft() {
-                if(MainActivity.IS_INIT){
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO){
                     if(duration.getProgress()-20000<=0){
                         duration.setProgress(0);
                         MainActivity.server.seekTo(duration.getProgress());
@@ -447,7 +447,7 @@ if(MainActivity.IS_PLAYING) {
 
 
             public void onSwipeBottom() {
-                if(MainActivity.IS_INIT){
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP){
                     if(MainActivity.VOLUME>0f){
                         MainActivity.VOLUME-=10f;
                         MainActivity.server.setVolume();
@@ -461,7 +461,7 @@ if(MainActivity.IS_PLAYING) {
 
             @Override
             public void onTouchCenter() {
-                if(MainActivity.IS_INIT){
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO){
                     if(duration.getProgress()-5000<=0){
                         duration.setProgress(0);
                         MainActivity.server.seekTo(duration.getProgress());
@@ -530,7 +530,7 @@ if(MainActivity.IS_PLAYING) {
             seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(MainActivity.IS_INIT) {
+                    if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP) {
                         equalizer.setBandLevel((short) 0, (short) (progress + min));
 
                     }
@@ -553,7 +553,7 @@ if(MainActivity.IS_PLAYING) {
             seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(MainActivity.IS_INIT) {
+                    if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP) {
                         equalizer.setBandLevel((short) 1, (short) (progress + min));
                     }
                 }
@@ -575,7 +575,7 @@ if(MainActivity.IS_PLAYING) {
             seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(MainActivity.IS_INIT) {
+                    if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP) {
                         equalizer.setBandLevel((short) 2, (short) (progress + min));
                     }
                 }
@@ -597,7 +597,7 @@ if(MainActivity.IS_PLAYING) {
             seekBar4.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(MainActivity.IS_INIT) {
+                    if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP) {
                         equalizer.setBandLevel((short) 3, (short) (progress + min));
                     }
                 }
@@ -619,7 +619,7 @@ if(MainActivity.IS_PLAYING) {
             seekBar5.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(MainActivity.IS_INIT) {
+                    if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP) {
                         equalizer.setBandLevel((short) 4, (short) (progress + min));
                     }
                 }

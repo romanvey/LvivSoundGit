@@ -53,7 +53,10 @@ public class List extends android.support.v4.app.Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("State", "List: onItemClick()");
-                Player.video.start();
+                if(MainActivity.IS_RADIO){
+                    MainActivity.IS_RADIO=false;
+                    MainActivity.server.stopSong();
+                }
                 MainActivity.cursor_numb=2;
                 if(!MainActivity.IS_INIT&&!MainActivity.IS_FIRST_TIME_BY_SESSION_PLAY){
                     MainActivity.server.initMusicPlayer();

@@ -103,6 +103,10 @@ FloatingActionButton fab;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MainActivity.cursor_numb=1;
+                if(MainActivity.IS_RADIO){
+                    MainActivity.IS_RADIO=false;
+                    MainActivity.server.stopSong();
+                }
                 if(!MainActivity.IS_INIT&&!MainActivity.IS_FIRST_TIME_BY_SESSION_PLAY){
                     MainActivity.server.initMusicPlayer();
                 }
@@ -128,7 +132,7 @@ FloatingActionButton fab;
                 if(MainActivity.all.getInt(MainActivity.MOOD_INT)==101) {
                     MainActivity.createToast(getResources().getString(R.string.mood_not_chosen));
                 }else{
-                    MainActivity.createToast(R.string.mood+": " + MainActivity.all.getInt(MainActivity.MOOD_INT));
+                    MainActivity.createToast(getResources().getString(R.string.mood)+": " + MainActivity.all.getInt(MainActivity.MOOD_INT));
                 }
                 return true;
             }
@@ -201,7 +205,7 @@ FloatingActionButton fab;
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("State","Search: onResume()");
+        Log.d("State", "Search: onResume()");
     }
 
     public static int getMin(){

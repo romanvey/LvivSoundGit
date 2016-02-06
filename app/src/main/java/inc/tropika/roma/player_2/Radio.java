@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -24,6 +23,7 @@ public class Radio extends android.support.v4.app.Fragment {
         radio_list=(ListView)view.findViewById(R.id.radio_list);
         ra=new RadioAdapter(getActivity().getBaseContext());
         radio_list.setAdapter(ra);
+
         if(MainActivity.settings.getInt(5)==0){
             root.setBackground(getResources().getDrawable(R.drawable.lv_4));
         }
@@ -32,8 +32,27 @@ public class Radio extends android.support.v4.app.Fragment {
         }
         radio_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 drag();
+
+                        try {
+                            MainActivity.radioTmp.startRadio(MainActivity.radio_paths[position]);
+                            MainActivity.pos_radio = position;
+                            MainActivity.IS_RADIO = true;
+                            MainActivity.IS_RADIO_TMP = true;
+                            MainActivity.server.playSong();
+                            Player.title.setText(getResources().getString(R.string.conecting_to_station_title));
+                            Player.duration.setMax(0);
+                            Player.video.pause();
+                            Player.allTime.setText("00:00");
+                            Player.currTime.setText("00:00");
+                            MainActivity.createToast(getResources().getString(R.string.conecting_to_station_title));
+                            //if radio
+                        } catch (Exception e) {
+                            Log.d("State", e.toString());
+                            MainActivity.createToast(getResources().getString(R.string.error_radio_toast));
+                        }
+
             }
         });
         return view;

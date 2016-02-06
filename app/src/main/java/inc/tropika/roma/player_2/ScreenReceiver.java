@@ -25,7 +25,7 @@ static int count=0;
             }
             if(count>1){
                 count=0;
-                if(MainActivity.IS_INIT){
+                if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO){
                     if(MainActivity.IS_PLAYING){
                     MainActivity.server.musicCompleted();
                     }else{

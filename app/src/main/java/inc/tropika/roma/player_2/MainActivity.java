@@ -10,6 +10,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+
+import co.mobiwise.library.RadioListener;
+import co.mobiwise.library.RadioManager;
 import inc.tropika.roma.player_2.MyService.MyBinder;
 
 import android.content.IntentFilter;
@@ -59,12 +62,13 @@ import java.util.Calendar;
 import java.util.Locale;
 
 
-public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, RadioListener {
     static final int PAGE_COUNT=4;
     public static Cursor cursor=null;
     public static Cursor all=null;
     public static Cursor settings=null;
     public static int pos = -1;
+    public static int pos_radio = -1;
     public static int id = -1;
     public static int STYLES;
     public static int LANGUAGES;
@@ -112,6 +116,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public static boolean IS_SHUFFLE=false;
     public static boolean IS_REPEAT=false;
     public static boolean IS_PLAYING=false;
+    public static boolean IS_RADIO=false;
+    public static boolean IS_RADIO_TMP=false;
     public static boolean IS_INIT=false;
     public static boolean IS_HIDDEN=false;
     public static boolean IS_NEW_LIST=false;
@@ -149,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     ContentValues cv=new ContentValues();
     boolean need_orient;
     Handler or;
+    public static RadioManager radioTmp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
 
         init_app();
-
+        init_tmp_radio();
         if(settings.getInt(5)==1){
             tf = Typeface.createFromAsset(this.getAssets(), "DS_Moster.ttf");
         }else{
@@ -203,7 +210,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     }
 
 
-
+private void init_tmp_radio(){
+    radioTmp=RadioManager.with(this);
+    radioTmp.registerListener(this);
+    radioTmp.enableNotification(false);
+}
 
 
     public static void createToast(String text){
@@ -480,12 +491,16 @@ fr.commit();
             createToast(getResources().getString(R.string.song_not_chosen));
             return;
         }
+        if(MainActivity.IS_RADIO){
+            createToast(getResources().getString(R.string.not_for_radio));
+            return;
+        }
         String where="SELECT * FROM "+DBHelper.TABLE+" WHERE "+DBHelper.IDS+"="+id;
         Cursor cursor_tmp=db.rawQuery(where,null);
         cursor_tmp.moveToFirst();
       if(((Player.mood.getProgress() - 1) == cursor_tmp.getInt(MOOD_INT)) || ((Player.mood.getProgress() == 0)&&(cursor_tmp.getInt(MOOD_INT)==101))){
           createToast(getResources().getString(R.string.mood_not_changed));
-          Log.d("State","Pos = "+cursor_tmp.getPosition()+" mood = "+cursor_tmp.getInt(MOOD_INT)+" new_mood = "+(Player.mood.getProgress()-1)+" id = "+cursor_tmp.getInt(IDS_INT)+" =");
+          Log.d("State", "Pos = " + cursor_tmp.getPosition() + " mood = " + cursor_tmp.getInt(MOOD_INT) + " new_mood = " + (Player.mood.getProgress() - 1) + " id = " + cursor_tmp.getInt(IDS_INT) + " =");
       }else{
           createToast(getResources().getString(R.string.mood_saved));
           if(Player.mood.getProgress()==0){
@@ -611,6 +626,7 @@ fr.commit();
         super.onStart();
         Log.d("State", "MainActivity: OnStart()");
         loadLang();
+        radioTmp.connect();
         IS_HIDDEN=false;
         if(MainActivity.IS_PLAYING&&MainActivity.IS_INIT){
             Player.video.start();
@@ -674,6 +690,7 @@ fr.commit();
             Log.d("State","Error in onDestroy() "+e.toString());
         }
         finally{
+            radioTmp.disconnect();
             if(notification!=null){
                 mNotificationManager.cancel(NOTIF_ID);
                 notification=null;
@@ -703,6 +720,27 @@ fr.commit();
 
         alarm.set(AlarmManager.RTC, calendar.getTimeInMillis(), startAlarmPI);
     }
+
+    @Override
+    public void onRadioConnected() {
+
+    }
+
+    @Override
+    public void onRadioStarted() {
+
+    }
+
+    @Override
+    public void onRadioStopped() {
+
+    }
+
+    @Override
+    public void onMetaDataReceived(String s, String s1) {
+
+    }
+
 
     private class MyAdapter extends FragmentPagerAdapter{
 
@@ -1082,13 +1120,21 @@ public void init_app(){
             contentView = new RemoteViews(ctx.getPackageName(), R.layout.notif);
             play.setAction(ACTION_PLAY);
         }
-        if(cursor_numb==1) {
-            all.moveToPosition(pos);
-            contentView.setTextViewText(R.id.title_n,all.getString(TITLES_INT));
-        }
-        if(cursor_numb==2) {
-            cursor.moveToPosition(pos);
-            contentView.setTextViewText(R.id.title_n,cursor.getString(TITLES_INT));
+        if(IS_RADIO){
+            if(MainActivity.IS_RADIO_TMP){
+                contentView.setTextViewText(R.id.title_n,ctx.getResources().getString(R.string.conecting_to_station_title));
+            }else{
+                contentView.setTextViewText(R.id.title_n,radio_titles[pos_radio]);
+            }
+        }else {
+            if (cursor_numb == 1) {
+                all.moveToPosition(pos);
+                contentView.setTextViewText(R.id.title_n, all.getString(TITLES_INT));
+            }
+            if (cursor_numb == 2) {
+                cursor.moveToPosition(pos);
+                contentView.setTextViewText(R.id.title_n, cursor.getString(TITLES_INT));
+            }
         }
         Intent prev=new Intent(ctx,pendingIntentListener.class);
         Intent next=new Intent(ctx,pendingIntentListener.class);
@@ -1118,11 +1164,29 @@ public void init_app(){
             Log.d("State","pendingIntentListener: onReceive()");
             Log.d("State","Action: "+intent.getAction());
             switch (intent.getAction()){
-                case ACTION_NEXT:server.musicCompleted();break;
-                case ACTION_PREV:server.prev();break;
-                case ACTION_PLAY:server.resumeSong();break;
-                case ACTION_PAUSE:server.pauseSong();break;
-                case ACTION_CLOSE:server.stopSong();server.un_init();break;
+                case ACTION_NEXT:
+                    if(!MainActivity.IS_RADIO) {
+                        server.musicCompleted();
+                    }
+                    break;
+                case ACTION_PREV:
+                    if(!MainActivity.IS_RADIO) {
+                        server.prev();
+                    }
+                    break;
+                case ACTION_PLAY:
+                    if(!MainActivity.IS_RADIO_TMP) {
+                        server.resumeSong();
+                    }
+                    break;
+                case ACTION_PAUSE:
+                    if(!MainActivity.IS_RADIO_TMP) {
+                        server.pauseSong();
+                    }
+                    break;
+                case ACTION_CLOSE:
+                    server.stopSong();server.un_init();radioTmp.stopRadio();
+                    break;
                 default:break;
             }
 

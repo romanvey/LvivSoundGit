@@ -55,5 +55,11 @@
     <string name="alarm_ok">Запустити</string>
     <string name="lang">Англійська версія (Потребує перезавантаження)</string>
     <string name="auto_update">Автооновлення пісень при запуску</string>
+    <string name="not_for_radio">Збереження настрою не для радіо</string>
+    <string name="conecting_to_station_title">Підключення до хвилі..</string>
+    <string name="error_radio_toast">Не вдалось підключитись</string>
+    <string name="conecting_to_station_success_toast">Успішно підключено!</string>
+
+
 
 </resources>

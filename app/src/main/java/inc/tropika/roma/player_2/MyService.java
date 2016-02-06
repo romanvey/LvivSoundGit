@@ -83,11 +83,8 @@ public class MyService extends Service{
 
 
 public void musicCompleted(){
-    Log.d("State","MyService: MusicCompleted()");
+    Log.d("State", "MyService: MusicCompleted()");
     Log.d("State","New List: "+MainActivity.IS_NEW_LIST+"; Position: "+MainActivity.pos+";");
-    if(MainActivity.IS_REPEAT){
-        playSong();
-    }
     int rand;
 MainActivity.settings.moveToFirst();
     if(MainActivity.cursor_numb==1){
@@ -158,7 +155,7 @@ public void setLooping(){
     public void onDestroy() {
         super.onDestroy();
         Log.d("State","MyService: onDestroy()");
-        Log.d("State","Losing focus");
+        Log.d("State", "Losing focus");
         audioManager.abandonAudioFocus(afListenerMusic);
     }
 
@@ -171,6 +168,8 @@ public void setLooping(){
         Log.d("State", "MyService: stopSong()");
             Player.video.pause();
             MainActivity.IS_INIT=false;
+            MainActivity.IS_RADIO=false;
+        MainActivity.IS_RADIO_TMP=false;
             MainActivity.IS_PAUSED_BY_SENSOR=false;
             player.stop();
             player.release();
@@ -194,7 +193,7 @@ public void pauseSong(){
 }
 
 public void resumeSong(){
-    Log.d("State","MyService: resumeSong()");
+    Log.d("State", "MyService: resumeSong()");
     if(!MainActivity.IS_PLAYING&&MainActivity.IS_INIT){
         player.start();
         Log.d("State","MyService song resumed");
@@ -215,100 +214,124 @@ public void resumeSong(){
 
     public void playSong(){
         Log.d("State","MyService: playSong()");
+        if(MainActivity.IS_RADIO_TMP){
+            MainActivity.radioTmp.stopRadio();
+        }
         player.reset();
-        try{
-            if(MainActivity.cursor_numb==2) {
-                MainActivity.cursor.moveToPosition(MainActivity.pos);
-                player.setDataSource(MainActivity.cursor.getString(MainActivity.PATHS_INT));
-                Log.d("State", String.format("NO Error setting data source %s", MainActivity.cursor.getString(MainActivity.PATHS_INT)));
-            }
-            if(MainActivity.cursor_numb==1){
-                MainActivity.all.moveToPosition(MainActivity.pos);
-                player.setDataSource(MainActivity.all.getString(MainActivity.PATHS_INT));
-                Log.d("State", String.format("NO Error setting data source %s", MainActivity.all.getString(MainActivity.PATHS_INT)));
+        try {
+            if (MainActivity.IS_RADIO) {
+                player.setDataSource(MainActivity.radio_paths[MainActivity.pos_radio]);
+            } else {
+                if (MainActivity.cursor_numb == 2) {
+                    MainActivity.cursor.moveToPosition(MainActivity.pos);
+                    player.setDataSource(MainActivity.cursor.getString(MainActivity.PATHS_INT));
+                    Log.d("State", String.format("NO Error setting data source %s", MainActivity.cursor.getString(MainActivity.PATHS_INT)));
+                }
+                if (MainActivity.cursor_numb == 1) {
+                    MainActivity.all.moveToPosition(MainActivity.pos);
+                    player.setDataSource(MainActivity.all.getString(MainActivity.PATHS_INT));
+                    Log.d("State", String.format("NO Error setting data source %s", MainActivity.all.getString(MainActivity.PATHS_INT)));
+                }
             }
         }
         catch(Exception e){
             Log.d("State", String.format("Error setting data source %s", e.toString()));
         }
-        try {
-            MainActivity.STOPPED_BY_AUDIO_FOCUS=false;
-            player.prepare();
-            player.start();
-            player.setVolume(MainActivity.VOLUME/100,MainActivity.VOLUME/100);
-            if(MainActivity.cursor_numb==2) {
-                MainActivity.cursor.moveToPosition(MainActivity.pos);
-                MainActivity.id = MainActivity.cursor.getInt(MainActivity.IDS_INT);
-            }
-            if(MainActivity.cursor_numb==1){
-                MainActivity.all.moveToPosition(MainActivity.pos);
-                MainActivity.id = MainActivity.all.getInt(MainActivity.IDS_INT);
-            }
-            MainActivity.IS_PLAYING = true;
-            MainActivity.IS_INIT=true;
-            MainActivity.IS_PAUSED_BY_SENSOR=false;
-            MainActivity.IS_NEW_LIST=false;
-            MainActivity.IS_FIRST_TIME_BY_SESSION_PLAY=false;
-            if(!MainActivity.IS_HIDDEN&&Player.video!=null){
-                Player.video.start();
-            }
-            if(MainActivity.IS_HIDDEN){
+        MainActivity.STOPPED_BY_AUDIO_FOCUS=false;
+        player.prepareAsync();
+        player.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                if(MainActivity.IS_RADIO){
+                    MainActivity.createToast(getResources().getString(R.string.conecting_to_station_success_toast));
+                    MainActivity.radioTmp.stopRadio();
+                    MainActivity.IS_RADIO_TMP=false;
+                }
+                player.start();
+                player.setVolume(MainActivity.VOLUME/100,MainActivity.VOLUME/100);
+                if(MainActivity.cursor_numb==2) {
+                    MainActivity.cursor.moveToPosition(MainActivity.pos);
+                    MainActivity.id = MainActivity.cursor.getInt(MainActivity.IDS_INT);
+                }
+                if(MainActivity.cursor_numb==1){
+                    MainActivity.all.moveToPosition(MainActivity.pos);
+                    MainActivity.id = MainActivity.all.getInt(MainActivity.IDS_INT);
+                }
+                MainActivity.IS_PLAYING = true;
+                MainActivity.IS_INIT=true;
+                MainActivity.IS_PAUSED_BY_SENSOR=false;
+                MainActivity.IS_NEW_LIST=false;
+                MainActivity.IS_FIRST_TIME_BY_SESSION_PLAY=false;
+                if(!MainActivity.IS_HIDDEN&&Player.video!=null){
+                    Player.video.start();
+                }
+                if(MainActivity.IS_HIDDEN){
                     MainActivity.customNotification(MainActivity.ctx);
+                }
+                playerLayout();
             }
-            playerLayout();
-            Log.d("State", "Start playing");
-        } catch (IOException e) {
-            Log.d("State", "Error prepare "+e.toString());
-        }
+        });
+
+        Log.d("State", "Start playing");
 
     }
 
     public void setVolume(){
         Log.d("State","MyService: setVolume()");
-        Log.d("State","VOLUME set "+MainActivity.VOLUME);
+        Log.d("State", "VOLUME set " + MainActivity.VOLUME);
         float log1=(float)(Math.log(10-MainActivity.VOLUME/10)/Math.log(10));
-        player.setVolume(1-log1,1-log1);
+        player.setVolume(1 - log1, 1 - log1);
     }
 
     public int getDuration(){
        return player.getDuration();
     }
 public  void playerLayout(){
-    Log.d("State","MyService: playerLayout()");
-    if(MainActivity.cursor_numb==2){
-        MainActivity.cursor.moveToPosition(MainActivity.pos);
-        Player.title.setText(MainActivity.cursor.getString(MainActivity.TITLES_INT));
-    }
-    if(MainActivity.cursor_numb==1){
-        MainActivity.all.moveToPosition(MainActivity.pos);
-        Player.title.setText(MainActivity.all.getString(MainActivity.TITLES_INT));
+    Log.d("State", "MyService: playerLayout()");
+    if(MainActivity.IS_RADIO){
+        Player.title.setText(MainActivity.radio_titles[MainActivity.pos_radio]);
+        Player.duration.setMax(0);
+        Player.allTime.setText("00:00");
+        Player.currTime.setText("00:00");
+    }else {
+        if (MainActivity.cursor_numb == 2) {
+            MainActivity.cursor.moveToPosition(MainActivity.pos);
+            Player.title.setText(MainActivity.cursor.getString(MainActivity.TITLES_INT));
+        }
+        if (MainActivity.cursor_numb == 1) {
+            MainActivity.all.moveToPosition(MainActivity.pos);
+            Player.title.setText(MainActivity.all.getString(MainActivity.TITLES_INT));
+        }
+
+        MainActivity.duration = player.getDuration();
+        Player.duration.setMax(MainActivity.duration);
+        Player.allTime.setText(utils.milliSecondsToTimer(player.getDuration()));
+        durationHandler.postDelayed(updateSeekBarTime, 1000);
+        int progress = 0;
+        if (MainActivity.cursor_numb == 2) {
+            MainActivity.cursor.moveToPosition(MainActivity.pos);
+            progress = MainActivity.cursor.getInt(MainActivity.MOOD_INT);
+        }
+        if (MainActivity.cursor_numb == 1) {
+            MainActivity.all.moveToPosition(MainActivity.pos);
+            progress = MainActivity.all.getInt(MainActivity.MOOD_INT);
+        }
+
+
+        if (progress == 101) {
+            Player.mood.setProgress(0);
+            Player.mood_t.setText(getResources().getString(R.string.mood_not_chosen));
+        } else {
+            Player.mood_t.setText(String.format("%s: %s", getResources().getString(R.string.mood), Integer.toString(progress)));
+            progress++;
+            Player.mood.setProgress(progress);
+
+        }
     }
     Player.play.setImageDrawable(getResources().getDrawable(R.drawable.pause));
     Player.play.getDrawable().setColorFilter(getResources().getColor(R.color.primaryColor), PorterDuff.Mode.MULTIPLY);
-    MainActivity.duration=player.getDuration();
-    Player.duration.setMax(MainActivity.duration);
-    Player.allTime.setText(utils.milliSecondsToTimer(player.getDuration()));
-    durationHandler.postDelayed(updateSeekBarTime, 1000);
-    int progress=0;
-    if(MainActivity.cursor_numb==2){
-        MainActivity.cursor.moveToPosition(MainActivity.pos);
-    progress=MainActivity.cursor.getInt(MainActivity.MOOD_INT);
-    }
-    if(MainActivity.cursor_numb==1){
-        MainActivity.all.moveToPosition(MainActivity.pos);
-    progress=MainActivity.all.getInt(MainActivity.MOOD_INT);
-    }
 
 
-    if(progress==101){
-        Player.mood.setProgress(0);
-        Player.mood_t.setText(getResources().getString(R.string.mood_not_chosen));
-    }else{
-        Player.mood_t.setText(String.format("%s: %s",getResources().getString(R.string.mood),Integer.toString(progress)));
-        progress++;
-        Player.mood.setProgress(progress);
-
-    }
 
 }
 
@@ -336,6 +359,7 @@ public  void playerLayout(){
             MainActivity.mNotificationManager.cancel(MainActivity.NOTIF_ID);
             MainActivity.notification=null;
         }
+
        Player.title.setText("");
         Player.currTime.setText("00:00");
         Player.allTime.setText("00:00");
@@ -352,10 +376,7 @@ public  void playerLayout(){
 
     public void prev(){
         Log.d("State","MyService: prev()");
-        Log.d("State","New List: "+MainActivity.IS_NEW_LIST+"; Position: "+MainActivity.pos+";");
-        if(MainActivity.IS_REPEAT){
-            playSong();
-        }
+        Log.d("State", "New List: " + MainActivity.IS_NEW_LIST + "; Position: " + MainActivity.pos + ";");
         int rand;
         MainActivity.settings.moveToFirst();
         if(MainActivity.cursor_numb==1){
@@ -441,18 +462,23 @@ public  void playerLayout(){
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
                     player.setVolume(MainActivity.VOLUME/400,MainActivity.VOLUME/400);
                     MainActivity.STOPPED_BY_AUDIO_FOCUS=true;
+
                     event = "AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK";
                     break;
                 case AudioManager.AUDIOFOCUS_GAIN:
                     event = "AUDIOFOCUS_GAIN";
                     if(MainActivity.STOPPED_BY_AUDIO_FOCUS){
                         resumeSong();
+                       /* if(MainActivity.IS_RADIO_TMP){
+                            MainActivity.radioTmp.startRadio(MainActivity.radio_paths[MainActivity.pos_radio]);
+                        }
+                        MainActivity.IS_PAUSED_BY_TMP_RADIO=false;*/
                         MainActivity.STOPPED_BY_AUDIO_FOCUS=false;
                     }
                     break;
                 default:event = "NOT EXIST";
             }
-            Log.d("State","FOCUS: " + event);
+            Log.d("State", "FOCUS: " + event);
         }
     }
     public void seekTo(int time){
@@ -466,7 +492,7 @@ public  void playerLayout(){
             try {
                 //Log.d("State","updateSeekBarTime()");//very often
                 Player.duration.setProgress(player.getCurrentPosition());
-                if(MainActivity.IS_PLAYING&&!MainActivity.IS_DESTROY) {
+                if(MainActivity.IS_PLAYING&&!MainActivity.IS_DESTROY&&!MainActivity.IS_RADIO) {
                     durationHandler.postDelayed(this, 1000);
                 }
             } catch (Exception e) {
