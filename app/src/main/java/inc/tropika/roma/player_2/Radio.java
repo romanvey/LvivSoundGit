@@ -34,6 +34,9 @@ public class Radio extends android.support.v4.app.Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 drag();
+                if(!MainActivity.IS_INIT&&!MainActivity.IS_FIRST_TIME_BY_SESSION_PLAY){
+                    MainActivity.server.initMusicPlayer();
+                }
                     if(MainActivity.IS_PLAYING&&MainActivity.IS_RADIO&&position==MainActivity.pos_radio){
 
                     }else {
