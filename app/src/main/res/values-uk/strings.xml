@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Lviv Sound</string>
-    <string name="action_settings">Настройки</string>
+    <string name="action_settings">Налаштування</string>
     <string name="mood_string_1">Злий</string>
     <string name="mood_string_2">Стресовий</string>
     <string name="mood_string_3">Ніякий</string>
@@ -26,8 +26,8 @@
     <string name="song_not_chosen">Пісні не вибрано</string>
     <string name="mood_not_changed">Настрій не змінено</string>
     <string name="mood_saved">Настрій змінено</string>
-    <string name="when_stopped_today">Музику буде зупинено сьогодні в</string>
-    <string name="when_stopped_tomorrow">Музику буде зупинено завтра в</string>
+    <string name="when_stopped_today">Музику буде зупинено сьогодні о</string>
+    <string name="when_stopped_tomorrow">Музику буде зупинено завтра о</string>
     <string name="exit">Вихід</string>
     <string name="mess_to_exit">Ви справді бажаєте вийти?</string>
     <string name="mood_not_chosen">Настрій не вказано</string>
