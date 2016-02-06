@@ -55,8 +55,8 @@
     <string name="alarm_ok">Start</string>
     <string name="lang">English version (Need reload)</string>
     <string name="auto_update">Autoupdate song on startup</string>
-    <string name="not_for_radio">Збереження настрою не для радіо</string>
-    <string name="conecting_to_station_title">Підключення до хвилі..</string>
-    <string name="error_radio_toast">Не вдалось підключитись</string>
-    <string name="conecting_to_station_success_toast">Успішно підключено!</string>
+    <string name="not_for_radio">Saving mood is not for a radio</string>
+    <string name="conecting_to_station_title">Connecting to the wave..</string>
+    <string name="error_radio_toast">Failed to connect</string>
+    <string name="conecting_to_station_success_toast">Successfully connected!</string>
 </resources>
