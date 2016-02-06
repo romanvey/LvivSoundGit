@@ -34,7 +34,9 @@ public class Radio extends android.support.v4.app.Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 drag();
+                    if(MainActivity.IS_PLAYING&&MainActivity.IS_RADIO&&position==MainActivity.pos_radio){
 
+                    }else {
                         try {
                             MainActivity.radioTmp.startRadio(MainActivity.radio_paths[position]);
                             MainActivity.pos_radio = position;
@@ -52,7 +54,7 @@ public class Radio extends android.support.v4.app.Fragment {
                             Log.d("State", e.toString());
                             MainActivity.createToast(getResources().getString(R.string.error_radio_toast));
                         }
-
+                    }
             }
         });
         return view;
