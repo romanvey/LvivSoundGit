@@ -1,0 +1,3 @@
+[submodule "website/LvivSound_website"]
+	path = website/LvivSound_website
+	url = https://github.com/marianpetruk/LvivSound_website.git
