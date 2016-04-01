@@ -3,8 +3,10 @@ package inc.tropika.roma.player_2;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -27,12 +29,13 @@ public class Setts extends android.support.v4.app.Fragment {
     int mist;
     SensorManager mySensorManager;
     Sensor myProximitySensor;
-    public static Button clear,upd;
+    public static Button clear,upd,dev;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        view =inflater.inflate(R.layout.fragment_setts, container, false);
         clear = (Button) view.findViewById(R.id.clear);
+        dev= (Button) view.findViewById(R.id.developers);
         mistake = (SeekBar) view.findViewById(R.id.mistake);
         upd=(Button)view.findViewById(R.id.manual);
         f1 = (CheckBox) view.findViewById(R.id.f1);
@@ -51,6 +54,7 @@ public class Setts extends android.support.v4.app.Fragment {
         diapason.setTypeface(MainActivity.tf);
         clear.setTypeface(MainActivity.tf);
         upd.setTypeface(MainActivity.tf);
+        dev.setTypeface(MainActivity.tf);
 
 
         MainActivity.settings.moveToFirst();
@@ -58,8 +62,8 @@ public class Setts extends android.support.v4.app.Fragment {
         f1check = MainActivity.settings.getInt(2) != 0;
         f2check = MainActivity.settings.getInt(3) != 0;
         f3check = MainActivity.settings.getInt(4) != 0;
-        f4check = MainActivity.settings.getInt(5) != 0;
-        f5check = MainActivity.settings.getInt(7) != 0;
+        f4check = MainActivity.STYLES != 0;
+        f5check = MainActivity.LANGUAGES != 0;
         f6check = MainActivity.settings.getInt(8) != 0;
 
         mistake.setProgress(mist);
@@ -78,6 +82,17 @@ public class Setts extends android.support.v4.app.Fragment {
 
     public void listeners(){
         Log.d("State","Settings: listeners()");
+        dev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(MainActivity.hasConnection()) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://mpetruk.com/projects/lvivsound/"));
+                    startActivity(browserIntent);
+                }else{
+                    MainActivity.createToast(getResources().getString(R.string.no_connection));
+                }
+            }
+        });
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -210,8 +225,8 @@ upd.setOnClickListener(new View.OnClickListener() {
         f1check = MainActivity.settings.getInt(2) != 0;
         f2check = MainActivity.settings.getInt(3) != 0;
         f3check = MainActivity.settings.getInt(4) != 0;
-        f4check = MainActivity.settings.getInt(5) != 0;
-        f5check = MainActivity.settings.getInt(7) != 0;
+        f4check = MainActivity.settings.getInt(7) != 0;
+        f5check = MainActivity.settings.getInt(5) != 0;
         f6check = MainActivity.settings.getInt(8) != 0;
         if((MainActivity.settings.getInt(1)==mistake.getProgress())&&(f1check==f1.isChecked())
                 &&(f2check==f2.isChecked())&&(f3check==f3.isChecked())&&(f4check==f4.isChecked())&&

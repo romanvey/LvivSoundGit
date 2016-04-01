@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:animateLayoutChanges="true"
+    android:id="@+id/rooting">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/child">
+
+        <inc.tropika.roma.player_2.CustomViewPager android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></inc.tropika.roma.player_2.CustomViewPager>
+    </RelativeLayout>
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/src/main/res/layout/activity_main.xml -->

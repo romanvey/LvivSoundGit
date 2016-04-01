@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="inc.tropika.roma.player.Search"
+    android:background="@drawable/lv_1"
+    android:id="@+id/root">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/mood_tmp"
+        android:id="@+id/positiv"
+        android:textStyle="bold"
+        android:textColor="#373737"
+        android:layout_below="@+id/search"
+        android:layout_alignLeft="@+id/search"
+        android:layout_alignStart="@+id/search"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="20dp"
+        android:shadowColor="#ff000000"
+        android:shadowDx="-1"
+        android:shadowDy="-1"
+        android:shadowRadius="12"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search"
+        android:progress="50"
+        android:max="100"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_songs_without_mood"
+        android:id="@+id/uncategory"
+        android:checked="false"
+        android:textStyle="bold"
+        android:textColor="@color/text_color"
+        android:textSize="20dp"
+        android:layout_below="@+id/positiv"
+        android:layout_alignLeft="@+id/positiv"
+        android:layout_alignStart="@+id/positiv"
+        android:shadowColor="#ff000000"
+        android:shadowDx="-1"
+        android:shadowDy="-1"
+        android:shadowRadius="12"/>
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:src="@drawable/search"
+        fab:fab_colorNormal="@color/accentColor"
+        fab:fab_colorPressed="@color/accentColor800"
+        fab:fab_colorRipple="@color/accentColor"
+        fab:fab_shadow="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp" />
+
+    <ListView
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/uncategory"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/border" />
+</RelativeLayout>
+<!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/src/main/res/layout/fragment_search.xml -->

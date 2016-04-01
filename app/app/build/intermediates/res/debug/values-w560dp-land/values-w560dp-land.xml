@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/build/intermediates/exploded-aar/com.wdullaer/materialdatetimepicker/2.1.1/res/values-w560dp-land/values-w560dp-land.xml -->
+    <eat-comment/>
+    <dimen name="mdtp_date_picker_component_width">270dp</dimen>
+    <dimen name="mdtp_left_side_width">270dip</dimen>
+    <dimen name="mdtp_picker_dimen">270dip</dimen>
+</resources>

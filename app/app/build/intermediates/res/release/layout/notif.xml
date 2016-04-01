@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Title"
+        android:id="@+id/title_n"
+        android:textStyle="italic"
+        android:singleLine="true"
+        android:maxWidth="320dp"
+        android:textColor="#ffe3e3e3"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:id="@+id/prev_n"
+        android:src="@drawable/prev_n"
+        android:background="@null"
+        android:layout_below="@+id/linearLayout"
+        android:layout_toLeftOf="@+id/play_n"
+        android:layout_toStartOf="@+id/play_n"
+        android:layout_marginRight="30dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:id="@+id/next_n"
+        android:src="@drawable/next_n"
+        android:background="@null"
+        android:layout_below="@+id/linearLayout"
+        android:layout_toRightOf="@+id/play_n"
+        android:layout_toEndOf="@+id/play_n"
+        android:layout_marginLeft="30dp" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:id="@+id/play_n"
+        android:background="@null"
+        android:src="@drawable/play_n"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:id="@+id/close_n"
+        android:src="@drawable/close_n"
+        android:background="@null"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_n"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
+
+    </LinearLayout>
+
+</RelativeLayout><!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/src/main/res/layout/notif.xml -->

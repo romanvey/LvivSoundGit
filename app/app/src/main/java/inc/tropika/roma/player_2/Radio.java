@@ -18,25 +18,28 @@ public class Radio extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("State", "Radio: OnCreateView()");
-        View view=inflater.inflate(R.layout.fragment_radio, container, false);
+        View view= null;
+            view = inflater.inflate(R.layout.fragment_radiolist, container, false);
         root =(RelativeLayout)view.findViewById(R.id.root);
         radio_list=(ListView)view.findViewById(R.id.radio_list);
         ra=new RadioAdapter(getActivity().getBaseContext());
         radio_list.setAdapter(ra);
 
         if(MainActivity.settings.getInt(5)==0){
-            root.setBackground(getResources().getDrawable(R.drawable.lv_4));
+                root.setBackground(getResources().getDrawable(R.drawable.fon));
         }
         else{
-            root.setBackground(getResources().getDrawable(R.drawable.st_4));
+                root.setBackground(getResources().getDrawable(R.drawable.st_1));
         }
         radio_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                drag();
-                if(!MainActivity.IS_INIT&&!MainActivity.IS_FIRST_TIME_BY_SESSION_PLAY){
-                    MainActivity.server.initMusicPlayer();
+
+                if(!MainActivity.hasConnection()){
+                    MainActivity.createToast(getResources().getString(R.string.no_connection));
+                    return;
                 }
+                drag();
                     if(MainActivity.IS_PLAYING&&MainActivity.IS_RADIO&&position==MainActivity.pos_radio){
 
                     }else {

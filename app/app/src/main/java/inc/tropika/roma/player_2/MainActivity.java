@@ -29,6 +29,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.PowerManager;
@@ -80,8 +82,8 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public static RelativeLayout child;
     public static boolean bound = false;
     public static ArrayList<String> ids = new ArrayList<>();
-    public static String[] radio_titles=new String[2];
-    public static String[] radio_paths=new String[2];
+    public static String[] radio_titles=new String[6];
+    public static String[] radio_paths=new String[6];
     public static final int IDS_INT=1;
     public static final int TITLES_INT=2;
     public static final int PATHS_INT=3;
@@ -91,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
     public static  HelpList hl;
     public static Setts st;
 
-    public static String FILE="back_l.mp4";
+    public static String FILE="video.mp4";
 
     public static final String ACTION_PREV="inc.tropika.roma.player_2.PREVIOUS";
     public static final String ACTION_PLAY="inc.tropika.roma.player_2.PLAY";
@@ -177,10 +179,11 @@ public class MainActivity extends AppCompatActivity implements TimePickerDialog.
 
         init_app();
         init_tmp_radio();
+        settings.moveToFirst();
         if(settings.getInt(5)==1){
             tf = Typeface.createFromAsset(this.getAssets(), "DS_Moster.ttf");
         }else{
-            tf = Typeface.createFromAsset(this.getAssets(), "AGGalleonC.otf");
+            tf = Typeface.createFromAsset(this.getAssets(), "OpenSans-Bold.ttf");
         }
         settings.moveToFirst();
         getPager();
@@ -215,6 +218,31 @@ private void init_tmp_radio(){
     radioTmp.registerListener(this);
     radioTmp.enableNotification(false);
 }
+
+
+
+    public static boolean hasConnection()
+    {
+        ConnectivityManager cm = (ConnectivityManager)ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        wifiInfo = cm.getActiveNetworkInfo();
+        if (wifiInfo != null && wifiInfo.isConnected())
+        {
+            return true;
+        }
+        return false;
+    }
+
+
 
 
     public static void createToast(String text){
@@ -348,12 +376,49 @@ private void init_tmp_radio(){
    }
 public void style(){
      settings.moveToFirst();
-    if(STYLES!=settings.getInt(5)||LANGUAGES!=settings.getInt(7)){
+    int tmp1,tmp2;
+    if(Setts.f4.isChecked()){tmp1=1;}else{tmp1=0;}
+    if(Setts.f5.isChecked()){tmp2=1;}else{tmp2=0;}
+    if(tmp1!=STYLES||tmp2!=LANGUAGES){
         AlertDialog.Builder builder_c = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
         builder_c.setTitle(getResources().getString(R.string.changes));
 
         builder_c.setMessage(getResources().getString(R.string.mess_to_reload));
-        builder_c.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+        builder_c.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                settings=db.query(DBHelper.SETTINGS,null,null,null,null,null,null);
+                settings.moveToFirst();
+                Setts.f1.setChecked(MainActivity.settings.getInt(2) != 0);
+                Setts.f2.setChecked(MainActivity.settings.getInt(3) != 0);
+                Setts.f3.setChecked(MainActivity.settings.getInt(4) != 0);
+                Setts.f4.setChecked(MainActivity.settings.getInt(5) != 0);
+                Setts.f5.setChecked(MainActivity.settings.getInt(7) != 0);
+                Setts.f6.setChecked(MainActivity.settings.getInt(8) != 0);
+                if (STYLES != settings.getInt(5)) {
+                    cv.put(DBHelper.F4, STYLES);
+                    if (STYLES == 1) {
+                        Setts.f4.setChecked(true);
+                    } else {
+                        Setts.f4.setChecked(false);
+                    }
+                }
+
+                if (LANGUAGES != settings.getInt(7)) {
+                    cv.put(DBHelper.F5, LANGUAGES);
+                    if (LANGUAGES == 1) {
+                        Setts.f5.setChecked(true);
+                    } else {
+                        Setts.f5.setChecked(false);
+                    }
+
+                }
+                db.update(DBHelper.SETTINGS, cv, null, null);
+                cv.clear();
+                settings=db.query(DBHelper.SETTINGS,null,null,null,null,null,null);
+            }
+        });
+        builder_c.setPositiveButton(getResources().getString(R.string.close), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -782,16 +847,25 @@ fr.commit();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config,
                 getBaseContext().getResources().getDisplayMetrics());
+        radio_titles[0]=getResources().getString(R.string.r1);
+        radio_titles[1]=getResources().getString(R.string.r2);
+        radio_titles[2]=getResources().getString(R.string.r3);
+        radio_titles[3]=getResources().getString(R.string.r4);
+        radio_titles[4]=getResources().getString(R.string.r5);
+        radio_titles[5]=getResources().getString(R.string.r6);
+        radio_paths[0]="http://195.248.234.62:8000/radioskovoroda";
+        radio_paths[1]="http://onair.lviv.fm:8000/lviv.fm";
+        radio_paths[2]="http://icecastlv.luxnet.ua/luxlviv";
+        radio_paths[3]="http://ua.uar.net:8000/galychyna";
+        radio_paths[4]="http://212.26.129.2:8000/era96";
+        radio_paths[5]="http://online-hitfm.tavrmedia.ua/HitFM_32";
     }
 
 
 
 public void init_app(){
 
-    radio_titles[0]="Радіо Сковорода";
-    radio_titles[1]="Львівська хвиля";
-    radio_paths[0]="http://195.248.234.62:8000/radioskovoroda";
-    radio_paths[1]="http://onair.lviv.fm:8000/lviv.fm";
+
 
 
     dbHelper=new DBHelper(this);
@@ -804,7 +878,7 @@ public void init_app(){
     prefs=getPreferences(MODE_PRIVATE);
     editor=prefs.edit();
     int isFirstTime=prefs.getInt(IS_FIRST_TIME,1);
-    Log.d("State","isFirstTime: "+isFirstTime);
+    Log.d("State", "isFirstTime: " + isFirstTime);
     if(isFirstTime==1) {
         cv.put(DBHelper.FIRST_START, 1);
         db.insert(DBHelper.SETTINGS, null, cv);
@@ -825,9 +899,9 @@ public void init_app(){
             getAudio();
         }
     }
-    settings.moveToFirst();
-    STYLES=settings.getInt(5);
-    LANGUAGES=settings.getInt(7);
+        settings.moveToFirst();
+        STYLES = settings.getInt(5);
+        LANGUAGES = settings.getInt(7);
 }
 
 
@@ -1193,4 +1267,6 @@ public void init_app(){
         }
     }
 }
+
+
 

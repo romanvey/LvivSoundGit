@@ -197,7 +197,7 @@ public void style(){
 }
 
     public void titles(){
-        Log.d("State","Player: titles()");
+        Log.d("State", "Player: titles()");
         title.setMaxWidth((int)(Utils.w *0.8));
         title.setTypeface(MainActivity.tf);
         title.setFocusable(true);
@@ -206,14 +206,23 @@ public void style(){
     @Override
     public void onStart() {
         super.onStart();
+        //HERE!!!!!!!!!!!!!!!!!!
         if(MainActivity.IS_INIT) {
-            if(MainActivity.cursor_numb==2) {
-                MainActivity.cursor.moveToPosition(MainActivity.pos);
-                Player.title.setText(MainActivity.cursor.getString(MainActivity.TITLES_INT));
-            }
-            if(MainActivity.cursor_numb==1) {
-                MainActivity.all.moveToPosition(MainActivity.pos);
-                Player.title.setText(MainActivity.all.getString(MainActivity.TITLES_INT));
+            if(MainActivity.IS_RADIO){
+                if(MainActivity.IS_RADIO_TMP){
+                    Player.title.setText(getResources().getString(R.string.conecting_to_station_title));
+                }else{
+                    Player.title.setText(MainActivity.radio_titles[MainActivity.pos_radio]);
+                }
+            }else {
+                if (MainActivity.cursor_numb == 2) {
+                    MainActivity.cursor.moveToPosition(MainActivity.pos);
+                    Player.title.setText(MainActivity.cursor.getString(MainActivity.TITLES_INT));
+                }
+                if (MainActivity.cursor_numb == 1) {
+                    MainActivity.all.moveToPosition(MainActivity.pos);
+                    Player.title.setText(MainActivity.all.getString(MainActivity.TITLES_INT));
+                }
             }
             Player.play.setImageDrawable(getResources().getDrawable(R.drawable.pause));
             Player.play.getDrawable().setColorFilter(getResources().getColor(R.color.primaryColor), PorterDuff.Mode.MULTIPLY);
@@ -510,27 +519,32 @@ if(MainActivity.IS_PLAYING) {
             freq3.setTypeface(MainActivity.tf);
             freq4.setTypeface(MainActivity.tf);
             freq5.setTypeface(MainActivity.tf);
-            freq1.setText((equalizer.getCenterFreq((short) 0)/1000)+"hz");
-            freq2.setText((equalizer.getCenterFreq((short) 1)/1000)+"hz");
-            freq3.setText((equalizer.getCenterFreq((short) 2)/1000)+"hz");
-            freq4.setText((equalizer.getCenterFreq((short) 3)/1000)+"hz");
-            freq5.setText((equalizer.getCenterFreq((short) 4)/1000)+"hz");
-            min1.setText((min/100)+"db");
-            min2.setText((min/100)+"db");
-            min3.setText((min/100)+"db");
-            min4.setText((min/100)+"db");
+            freq1.setText((equalizer.getCenterFreq((short) 0) / 1000) + "hz");
+            freq2.setText((equalizer.getCenterFreq((short) 1) / 1000) + "hz");
+            freq3.setText((equalizer.getCenterFreq((short) 2) / 1000) + "hz");
+            freq4.setText((equalizer.getCenterFreq((short) 3) / 1000) + "hz");
+            freq5.setText((equalizer.getCenterFreq((short) 4) / 1000) + "hz");
+            min1.setText((min / 100) + "db");
+            min2.setText((min / 100) + "db");
+            min3.setText((min / 100) + "db");
+            min4.setText((min / 100) + "db");
             min5.setText((min/100)+"db");
             max1.setText((max/100)+"db");
             max2.setText((max/100)+"db");
             max3.setText((max/100)+"db");
             max4.setText((max/100)+"db");
-            max5.setText((max/100)+"db");
+            max5.setText((max / 100) + "db");
+            equalizer.setBandLevel((short) 0, (short)((max-min)/2));
+            equalizer.setBandLevel((short) 1, (short)((max-min)/2));
+            equalizer.setBandLevel((short) 2, (short)((max-min)/2));
+            equalizer.setBandLevel((short) 3, (short)((max-min)/2));
+            equalizer.setBandLevel((short)4, (short)((max-min)/2));
             seekBar1.setMax(max-min);
             seekBar1.setProgress(equalizer.getBandLevel((short) 0));
             seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP) {
+                    if (MainActivity.IS_INIT && !MainActivity.IS_RADIO_TMP) {
                         equalizer.setBandLevel((short) 0, (short) (progress + min));
 
                     }
@@ -553,7 +567,7 @@ if(MainActivity.IS_PLAYING) {
             seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP) {
+                    if (MainActivity.IS_INIT && !MainActivity.IS_RADIO_TMP) {
                         equalizer.setBandLevel((short) 1, (short) (progress + min));
                     }
                 }
@@ -575,7 +589,7 @@ if(MainActivity.IS_PLAYING) {
             seekBar3.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    if(MainActivity.IS_INIT&&!MainActivity.IS_RADIO_TMP) {
+                    if (MainActivity.IS_INIT && !MainActivity.IS_RADIO_TMP) {
                         equalizer.setBandLevel((short) 2, (short) (progress + min));
                     }
                 }

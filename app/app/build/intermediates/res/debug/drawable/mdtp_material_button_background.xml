@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:exitFadeDuration="@android:integer/config_shortAnimTime">
+    <item android:drawable="@drawable/mdtp_material_button_selected" android:state_focused="true" />
+    <item android:drawable="@drawable/mdtp_material_button_selected" android:state_pressed="true" />
+    <item android:drawable="@android:color/transparent" />
+</selector><!-- From: file:/Users/wdullaer/Documents/Programming%20Projects/MaterialDateTimePicker/library/src/main/res/drawable/mdtp_material_button_background.xml --><!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/build/intermediates/exploded-aar/com.wdullaer/materialdatetimepicker/2.1.1/res/drawable/mdtp_material_button_background.xml -->

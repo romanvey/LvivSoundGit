@@ -117,8 +117,7 @@
             android:layout_marginTop="100dp"
             android:layout_marginBottom="160dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:alpha="0.87">
+            android:layout_marginRight="40dp">
 
             <TextureView
                 android:layout_width="match_parent"

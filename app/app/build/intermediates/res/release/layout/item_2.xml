@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Title"
+        android:id="@+id/textView7"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:textColor="@color/text_color"
+        android:textSize="18.5sp"
+        android:layout_marginBottom="10dp"
+        android:shadowColor="#ff000000"
+        android:shadowDx="-1"
+        android:shadowDy="-1"
+        android:shadowRadius="12" />
+</LinearLayout><!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/src/main/res/layout/item_2.xml -->

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-uk/values-uk.xml -->
+    <eat-comment/>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Перейти на головний"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Перейти вгору"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Інші опції"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"Готово"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Переглянути всі"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"Вибрати програму"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Очистити запит"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"Пошуковий запит"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"Пошук"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"Надіслати запит"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"Голосовий пошук"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Надіслати через"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Надіслати через %s"</string>
+    <!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/src/main/res/values-uk/strings.xml -->
+    <eat-comment/>
+    <string name="action_settings">Налаштування</string>
+    <string name="add_songs_without_mood">Додати пісні без настрою</string>
+    <string name="alarm_ok">Запустити</string>
+    <string name="app_name">Lviv Sound</string>
+    <string name="auto_update">Автооновлення пісень при запуску</string>
+    <string name="autocomplete">Автозавершення</string>
+    <string name="cancel">Скасувати</string>
+    <string name="changes">Зміни</string>
+    <string name="clear">Очистити</string>
+    <string name="clear_mood">Очистити настрій</string>
+    <string name="clearing">Очищення</string>
+    <string name="close">Вийти</string>
+    <string name="close_alarm">Вимкнути</string>
+    <string name="conecting_to_station_success_toast">Успішно підключено!</string>
+    <string name="conecting_to_station_title">Підключення до хвилі..</string>
+    <string name="develop">Головний сайт плеєра</string>
+    <string name="diapason">Діапазон</string>
+    <string name="diapason_tmp">Діапазон: +/-10</string>
+    <string name="error_radio_toast">Не вдалось підключитись</string>
+    <string name="exit">Вихід</string>
+    <string name="f1_hover">Грати наступну пісню якщо 2 рази натиснути кнопку живлення за 3 секунди</string>
+    <string name="f2_pause">Пауза при наведені руки на датчик (затримати на 1с)</string>
+    <string name="f3_bass">Підсилення басів</string>
+    <string name="f4_style">Плитковий стиль (Потребує перезавантаження)</string>
+    <string name="founded">Знайдено</string>
+    <string name="gest">Жести</string>
+    <string name="lang">Англійська версія (Потребує перезавантаження)</string>
+    <!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/build/intermediates/exploded-aar/com.wdullaer/materialdatetimepicker/2.1.1/res/values-uk/values-uk.xml -->
+    <eat-comment/>
+    <string msgid="3968620852217927702" name="mdtp_day_picker_description">"Дні місяця – ескізи"</string>
+    <string msgid="6908431551612331381" name="mdtp_deleted_key">"<ns1:g id="KEY">%1$s</ns1:g> видалено"</string>
+    <string msgid="7007948707597430919" name="mdtp_done_label">"Готово"</string>
+    <string msgid="7586639618712934060" name="mdtp_hour_picker_description">"Вибір годин на циферблаті"</string>
+    <string msgid="2674929164900463786" name="mdtp_item_is_selected">"Вибрано: <ns1:g id="ITEM">%1$s</ns1:g>"</string>
+    <string msgid="6024811202872705251" name="mdtp_minute_picker_description">"Вибір хвилин на циферблаті"</string>
+    <string msgid="3973338219107019769" name="mdtp_select_day">"Виберіть місяць і день"</string>
+    <string msgid="7651068754188418859" name="mdtp_select_hours">"Вибрати години"</string>
+    <string msgid="8327182090226828481" name="mdtp_select_minutes">"Вибрати хвилини"</string>
+    <string msgid="2603330600102539372" name="mdtp_select_year">"Виберіть рік"</string>
+    <string msgid="6963340404644587098" name="mdtp_year_picker_description">"Роки – список"</string>
+    <!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/src/main/res/values-uk/strings.xml -->
+    <eat-comment/>
+    <string name="mess_alarm_closed">Автозавершення вимкнуто</string>
+    <string name="mess_clear">Очистити весь настрій</string>
+    <string name="mess_to_exit">Ви справді бажаєте вийти?</string>
+    <string name="mess_to_reload">Щоб зміни вступили в силу перезавантажте плеєр</string>
+    <string name="mess_to_stop_alarm">Бажаєте вимкнути таймер?</string>
+    <string name="mood">Настрій</string>
+    <string name="mood_not_changed">Настрій не змінено</string>
+    <string name="mood_not_chosen">Настрій не вказано</string>
+    <string name="mood_saved">Настрій змінено</string>
+    <string name="mood_songs">Настрій пісні</string>
+    <string name="mood_string_1">Злий</string>
+    <string name="mood_string_10">Для тренувань</string>
+    <string name="mood_string_2">Стресовий</string>
+    <string name="mood_string_3">Ніякий</string>
+    <string name="mood_string_4">Спокійний</string>
+    <string name="mood_string_5">Звичайний</string>
+    <string name="mood_string_6">Хороший</string>
+    <string name="mood_string_7">Пристрасний</string>
+    <string name="mood_string_8">Веселий</string>
+    <string name="mood_string_9">Енергійний</string>
+    <string name="mood_tmp">Настрій: 15–45</string>
+    <string name="mood_unknown">Настрій не вказано</string>
+    <string name="move_detector_not_found">Не знайдено датчика руху</string>
+    <string name="no_connection">Немає підключення до інтернету</string>
+    <string name="not_for_radio">Збереження настрою не для радіо</string>
+    <string name="r1">Радіо Сковорода</string>
+    <string name="r2">Львівська хвиля</string>
+    <string name="r3">Радіо Люкс</string>
+    <string name="r4">Радіо FM Галичина</string>
+    <string name="r5">Радіо Ера</string>
+    <string name="r6">Радіо Хіт FM</string>
+    <string name="save">Зберегти</string>
+    <string name="song_1"> пісню</string>
+    <string name="song_2"> пісні</string>
+    <string name="song_3"> пісень</string>
+    <string name="song_not_chosen">Пісні не вибрано</string>
+    <string name="songs_not_found">Пісень не знайдено</string>
+    <string name="update_songs">Оновити список пісень</string>
+    <string name="when_stopped_today">Музику буде зупинено сьогодні в</string>
+    <string name="when_stopped_tomorrow">Музику буде зупинено завтра в</string>
+</resources>

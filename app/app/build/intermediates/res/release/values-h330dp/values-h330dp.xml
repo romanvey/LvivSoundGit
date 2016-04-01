@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/Roma/Desktop/different/LvivSound/app/build/intermediates/exploded-aar/com.wdullaer/materialdatetimepicker/2.1.1/res/values-h330dp/values-h330dp.xml -->
+    <eat-comment/>
+    <dimen name="mdtp_date_picker_view_animator_height">252dp</dimen>
+    <dimen name="mdtp_time_picker_height">300dip</dimen>
+</resources>

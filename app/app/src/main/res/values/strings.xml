@@ -1,62 +1,139 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <resources>
+
     <string name="app_name">Lviv Sound</string>
+
     <string name="action_settings">Settings</string>
+
     <string name="mood_string_1">Angry</string>
+
     <string name="mood_string_2">Stressful</string>
+
     <string name="mood_string_3">Blank</string>
+
     <string name="mood_string_4">Calm</string>
+
     <string name="mood_string_5">Normal</string>
+
     <string name="mood_string_6">Good</string>
+
     <string name="mood_string_7">Passionate</string>
+
     <string name="mood_string_8">Cheerful</string>
+
     <string name="mood_string_9">Energetic</string>
+
     <string name="mood_string_10">For training</string>
+
     <string name="mood">Mood</string>
+
     <string name="mood_unknown">Mood is not specified</string>
+
     <string name="mood_songs">Mood of the song</string>
+
     <string name="changes">Changes</string>
+
     <string name="mess_to_reload">For changes to take effect restart Player</string>
+
     <string name="close">Exit</string>
+
     <string name="autocomplete">Sleep timer</string>
+
     <string name="mess_to_stop_alarm">Do you want to turn off the timer?</string>
+
     <string name="close_alarm">Close</string>
+
     <string name="mess_alarm_closed">Sleep timer off</string>
+
     <string name="cancel">Cancel</string>
+
     <string name="song_not_chosen">Songs are not selected</string>
-    <string name="mood_not_changed">Mood  didn\'t change</string>
+
+    <string name="mood_not_changed">Mood didn\'t change</string>
+
     <string name="mood_saved">Mood changed</string>
+
     <string name="when_stopped_today">The music will stop today at</string>
+
     <string name="when_stopped_tomorrow">The music will stop tomorrow at</string>
+
     <string name="exit">Exit</string>
+
     <string name="mess_to_exit">Do you really want to leave?</string>
+
     <string name="mood_not_chosen">Mood is not specified</string>
+
     <string name="songs_not_found">Songs have not been found</string>
+
     <string name="founded">Found</string>
+
     <string name="song_1"> song</string>
+
     <string name="song_2"> songs</string>
+
     <string name="song_3"> songs</string>
+
     <string name="clearing">Clearing</string>
+
     <string name="mess_clear">Clear all mood</string>
+
     <string name="clear">Clear</string>
+
     <string name="diapason">Range</string>
+
     <string name="move_detector_not_found">Not found the motion sensor</string>
+
     <string name="save">Save</string>
+
     <string name="gest">Gestures</string>
+
     <string name="add_songs_without_mood">Add songs without mood</string>
+
     <string name="mood_tmp">Mood: 15–45</string>
+
     <string name="f1_hover">Play next song if 2 times click the power button in 3 seconds</string>
+
     <string name="f2_pause">Pause if close the motion sensor (1 sec delay)</string>
+
     <string name="f3_bass">Bass boost</string>
+
     <string name="f4_style">Tile theme (Need reload)</string>
+
     <string name="clear_mood">Clear the mood</string>
+
     <string name="update_songs">Refresh the range of songs</string>
+
     <string name="diapason_tmp">Range: +/-10</string>
+
     <string name="alarm_ok">Start</string>
+
     <string name="lang">English version (Need reload)</string>
+
     <string name="auto_update">Autoupdate song on startup</string>
-    <string name="not_for_radio">Saving mood is not for a radio</string>
+
+    <string name="develop">Player homepage</string>
+
+    <string name="not_for_radio">Saving mood not for radio</string>
+
+    <string name="no_connection">No Internet connection</string>
+
     <string name="conecting_to_station_title">Connecting to the wave..</string>
-    <string name="error_radio_toast">Failed to connect</string>
+
+    <string name="error_radio_toast">Could not connect</string>
+
     <string name="conecting_to_station_success_toast">Successfully connected!</string>
+
+    <string name="r1">Radio Skovoroda</string>
+
+    <string name="r2">Radio L\'vivska hvylia</string>
+
+    <string name="r3">Radio L\'ux</string>
+
+    <string name="r4">Radio FM Galychyna</string>
+
+    <string name="r5">Radio Era</string>
+
+    <string name="r6">Radio Hit FM</string>
+
 </resources>

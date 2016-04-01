@@ -20,7 +20,12 @@ public class List extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.fragment_list,null);
+        View v= null;
+        try {
+            v = inflater.inflate(R.layout.fragment_list,null);
+        } catch (Exception e) {
+            Log.e("State",e.toString()+"");
+        }
         Log.d("State", "List: OnCreateView()");
         root =(RelativeLayout)v.findViewById(R.id.root);
         MainActivity.settings.moveToFirst();

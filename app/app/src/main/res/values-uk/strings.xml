@@ -1,65 +1,139 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <resources>
+
     <string name="app_name">Lviv Sound</string>
+
     <string name="action_settings">Налаштування</string>
+
     <string name="mood_string_1">Злий</string>
+
     <string name="mood_string_2">Стресовий</string>
+
     <string name="mood_string_3">Ніякий</string>
+
     <string name="mood_string_4">Спокійний</string>
+
     <string name="mood_string_5">Звичайний</string>
+
     <string name="mood_string_6">Хороший</string>
+
     <string name="mood_string_7">Пристрасний</string>
+
     <string name="mood_string_8">Веселий</string>
+
     <string name="mood_string_9">Енергійний</string>
+
     <string name="mood_string_10">Для тренувань</string>
+
     <string name="mood">Настрій</string>
+
     <string name="mood_unknown">Настрій не вказано</string>
+
     <string name="mood_songs">Настрій пісні</string>
+
     <string name="changes">Зміни</string>
+
     <string name="mess_to_reload">Щоб зміни вступили в силу перезавантажте плеєр</string>
+
     <string name="close">Вийти</string>
+
     <string name="autocomplete">Автозавершення</string>
+
     <string name="mess_to_stop_alarm">Бажаєте вимкнути таймер?</string>
+
     <string name="close_alarm">Вимкнути</string>
+
     <string name="mess_alarm_closed">Автозавершення вимкнуто</string>
+
     <string name="cancel">Скасувати</string>
+
     <string name="song_not_chosen">Пісні не вибрано</string>
+
     <string name="mood_not_changed">Настрій не змінено</string>
+
     <string name="mood_saved">Настрій змінено</string>
-    <string name="when_stopped_today">Музику буде зупинено сьогодні о</string>
-    <string name="when_stopped_tomorrow">Музику буде зупинено завтра о</string>
+
+    <string name="when_stopped_today">Музику буде зупинено сьогодні в</string>
+
+    <string name="when_stopped_tomorrow">Музику буде зупинено завтра в</string>
+
     <string name="exit">Вихід</string>
+
     <string name="mess_to_exit">Ви справді бажаєте вийти?</string>
+
     <string name="mood_not_chosen">Настрій не вказано</string>
+
     <string name="songs_not_found">Пісень не знайдено</string>
+
     <string name="founded">Знайдено</string>
+
     <string name="song_1"> пісню</string>
+
     <string name="song_2"> пісні</string>
+
     <string name="song_3"> пісень</string>
+
     <string name="clearing">Очищення</string>
+
     <string name="mess_clear">Очистити весь настрій</string>
+
     <string name="clear">Очистити</string>
+
     <string name="diapason">Діапазон</string>
+
     <string name="move_detector_not_found">Не знайдено датчика руху</string>
+
     <string name="save">Зберегти</string>
+
     <string name="gest">Жести</string>
+
     <string name="add_songs_without_mood">Додати пісні без настрою</string>
+
     <string name="mood_tmp">Настрій: 15–45</string>
-    <string name="f1_hover">Грати наступну пісню якщо 2 рази нажати кнопку живлення за 3 секунди</string>
+
+    <string name="f1_hover">Грати наступну пісню якщо 2 рази натиснути кнопку живлення за 3 секунди</string>
+
     <string name="f2_pause">Пауза при наведені руки на датчик (затримати на 1с)</string>
+
     <string name="f3_bass">Підсилення басів</string>
+
     <string name="f4_style">Плитковий стиль (Потребує перезавантаження)</string>
+
     <string name="clear_mood">Очистити настрій</string>
+
     <string name="update_songs">Оновити список пісень</string>
+
     <string name="diapason_tmp">Діапазон: +/-10</string>
+
     <string name="alarm_ok">Запустити</string>
+
     <string name="lang">Англійська версія (Потребує перезавантаження)</string>
+
     <string name="auto_update">Автооновлення пісень при запуску</string>
+
     <string name="not_for_radio">Збереження настрою не для радіо</string>
+
     <string name="conecting_to_station_title">Підключення до хвилі..</string>
+
     <string name="error_radio_toast">Не вдалось підключитись</string>
+
+    <string name="develop">Головний сайт плеєра</string>
+
+    <string name="no_connection">Немає підключення до інтернету</string>
+
     <string name="conecting_to_station_success_toast">Успішно підключено!</string>
 
+    <string name="r1">Радіо Сковорода</string>
 
+    <string name="r2">Львівська хвиля</string>
+
+    <string name="r3">Радіо Люкс</string>
+
+    <string name="r4">Радіо FM Галичина</string>
+
+    <string name="r5">Радіо Ера</string>
+
+    <string name="r6">Радіо Хіт FM</string>
 
 </resources>

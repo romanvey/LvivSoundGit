@@ -12,6 +12,7 @@ public class AlarmReceiver extends android.content.BroadcastReceiver {
            if(MainActivity.IS_INIT){
                MainActivity.server.stopSong();
                MainActivity.server.un_init();
+               MainActivity.radioTmp.stopRadio();
            }
             MainActivity.IS_ALARM_CREATED=false;
         }
